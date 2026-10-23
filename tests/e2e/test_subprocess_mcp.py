@@ -49,6 +49,26 @@ def test_mcp_subprocess_stdio_exchange() -> None:
         result = resp.get("result", {})
         assert result.get("serverInfo", {}).get("name") == "sketchwright"
 
+        # Notify initialized and request tools/list
+        init_notif = {"jsonrpc": "2.0", "method": "notifications/initialized"}
+        proc.stdin.write(json.dumps(init_notif) + "\n")
+
+        tools_req = {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}}
+        proc.stdin.write(json.dumps(tools_req) + "\n")
+        proc.stdin.flush()
+
+        tools_line = proc.stdout.readline()
+        assert tools_line.strip(), "Expected response to tools/list"
+        tools_resp = json.loads(tools_line)
+        assert tools_resp.get("id") == 2
+        tools_list = [t["name"] for t in tools_resp.get("result", {}).get("tools", [])]
+        assert "sketchwright_create_diagram" in tools_list
+        assert "sketchwright_validate_diagram" in tools_list
+        assert "sketchwright_layout_diagram" in tools_list
+        assert "sketchwright_export_diagram" in tools_list
+        assert "sketchwright_get_capabilities" in tools_list
+        assert "sketchwright_update_diagram" in tools_list
+
     finally:
         proc.terminate()
         try:

@@ -1,4 +1,4 @@
-"""Contract tests verifying the MCP server tool discovery, invocation, resources, and prompts."""
+from pathlib import Path
 
 import pytest
 
@@ -96,14 +96,82 @@ async def test_mcp_call_export_diagram() -> None:
 
 
 @pytest.mark.asyncio
+async def test_mcp_call_update_diagram() -> None:
+    server = create_server()
+    base_spec = {
+        "nodes": [{"id": "api", "label": "API Gateway"}],
+        "edges": [],
+    }
+    patch = {
+        "add_nodes": [{"id": "db", "label": "Database", "shape": "cylinder"}],
+        "add_edges": [{"id": "e1", "source": "api", "target": "db"}],
+    }
+    result = await server.call_tool(
+        "sketchwright_update_diagram",
+        {"specification": base_spec, "patch": patch},
+    )
+    assert not result.is_error
+    data = result.structured_content
+    assert data["status"] == "success"
+    assert "scene" in data
+    assert data["summary"]["nodes_count"] == 2
+    assert data["summary"]["edges_count"] == 1
+
+
+@pytest.mark.asyncio
 async def test_mcp_resources_and_prompts() -> None:
     server = create_server()
     resources = await server.list_resources()
     resource_uris = {r.uri for r in resources}
     assert "schema://v1.0" in resource_uris
     assert "capabilities://manifest" in resource_uris
+    assert "guide://usage" in resource_uris
 
     prompts = await server.list_prompts()
     prompt_names = {p.name for p in prompts}
     assert "architecture_diagram" in prompt_names
     assert "flowchart_diagram" in prompt_names
+    assert "dependency_graph" in prompt_names
+
+    # Test reading guide resource
+    guide_content = await server.read_resource("guide://usage")
+    assert any("Sketchwright Usage Guide" in item.content for item in guide_content)
+
+    # Test executing dependency_graph prompt
+    dep_prompt = await server.get_prompt("dependency_graph", {"project_name": "Sketchwright"})
+    assert "Sketchwright" in dep_prompt.messages[0].content.text
+
+
+@pytest.mark.asyncio
+async def test_mcp_call_invalid_input_error() -> None:
+    from mcp.server.mcpserver.exceptions import ToolError
+
+    server = create_server()
+    # Malformed spec with unresolved endpoint
+    bad_spec = {
+        "nodes": [{"id": "a"}],
+        "edges": [{"id": "e", "source": "a", "target": "non_existent"}],
+    }
+    with pytest.raises(ToolError) as exc:
+        await server.call_tool("sketchwright_create_diagram", {"specification": bad_spec})
+    assert "unresolved target endpoint 'non_existent'" in str(exc.value)
+
+
+@pytest.mark.asyncio
+async def test_mcp_call_path_traversal_blocked(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    from mcp.server.mcpserver.exceptions import ToolError
+
+    server = create_server()
+    safe_dir = tmp_path / "safe_dir"
+    safe_dir.mkdir(parents=True, exist_ok=True)
+    monkeypatch.setenv("SKETCHWRIGHT_ALLOWED_DIR", str(safe_dir))
+
+    spec = {"nodes": [{"id": "n1"}]}
+    bad_path = str(safe_dir / ".." / "escaped.excalidraw")
+
+    with pytest.raises(ToolError) as exc:
+        await server.call_tool(
+            "sketchwright_create_diagram",
+            {"specification": spec, "output_path": bad_path},
+        )
+    assert "resolves outside authorized directory" in str(exc.value)

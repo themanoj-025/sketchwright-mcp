@@ -141,13 +141,43 @@ def validate_excalidraw_scene(scene: dict[str, Any]) -> SceneValidationResult:
                             f"Container '{container_id}' is missing reciprocal boundElements entry for text '{elem_id}'."
                         )
 
+    # 4. Geometry and visual defect diagnostics
+    shape_elements = [
+        e
+        for e in elements
+        if isinstance(e, dict)
+        and e.get("type") in ("rectangle", "ellipse", "diamond")
+        and not e.get("customData", {}).get("isGroupContainer")
+        and not e.get("isDeleted")
+    ]
+    for i in range(len(shape_elements)):
+        for j in range(i + 1, len(shape_elements)):
+            s1 = shape_elements[i]
+            s2 = shape_elements[j]
+            # Axis-Aligned Bounding Box (AABB) intersection check
+            x1, y1, w1, h1 = s1.get("x", 0), s1.get("y", 0), s1.get("width", 0), s1.get("height", 0)
+            x2, y2, w2, h2 = s2.get("x", 0), s2.get("y", 0), s2.get("width", 0), s2.get("height", 0)
+            if (
+                isinstance(x1, (int, float))
+                and isinstance(y1, (int, float))
+                and isinstance(w1, (int, float))
+                and isinstance(h1, (int, float))
+                and isinstance(x2, (int, float))
+                and isinstance(y2, (int, float))
+                and isinstance(w2, (int, float))
+                and isinstance(h2, (int, float))
+            ):
+                if not (x1 + w1 <= x2 or x2 + w2 <= x1 or y1 + h1 <= y2 or y2 + h2 <= y1):
+                    warnings.append(
+                        f"Visual geometry warning: Elements '{s1.get('id')}' and '{s2.get('id')}' overlap in bounding boxes."
+                    )
+
     stats = {
         "total_elements": len(elements),
-        "shapes": sum(
-            1 for e in elements if isinstance(e, dict) and e.get("type") in ("rectangle", "ellipse", "diamond")
-        ),
+        "shapes": len(shape_elements),
         "arrows": sum(1 for e in elements if isinstance(e, dict) and e.get("type") == "arrow"),
         "texts": sum(1 for e in elements if isinstance(e, dict) and e.get("type") == "text"),
+        "visual_warnings": len(warnings),
     }
 
     return SceneValidationResult(

@@ -7,18 +7,49 @@ import os
 import uuid
 import xml.sax.saxutils as saxutils
 from pathlib import Path
-from typing import Any, Union
+from typing import Any, Optional, Union
 
 from sketchwright.errors import FileSystemError
+
+
+def validate_safe_output_path(
+    output_path: Union[str, Path],
+    enforce_boundary: bool = False,
+    allowed_root: Optional[Union[str, Path]] = None,
+) -> Path:
+    """Normalize and validate that a requested output path is safe and authorized.
+
+    - Resolves relative segments (e.g., '..') and symlinks to determine effective destination.
+    - When enforce_boundary is True (or SKETCHWRIGHT_ALLOWED_DIR is set in the environment),
+      verifies that the target path is strictly contained within the authorized root directory.
+    - Rejects path traversal escaping the authorized directory.
+    """
+    raw_path = Path(output_path)
+    target = raw_path.resolve()
+
+    env_root = os.getenv("SKETCHWRIGHT_ALLOWED_DIR")
+    if env_root or enforce_boundary:
+        root = Path(env_root if env_root else (allowed_root or Path.cwd())).resolve()
+        try:
+            target.relative_to(root)
+        except ValueError as e:
+            raise FileSystemError(
+                f"Access denied: Output path '{output_path}' resolves outside authorized directory '{root}'.",
+                details={"target": str(target), "allowed_root": str(root)},
+            ) from e
+
+    return target
 
 
 def write_excalidraw_file(
     scene: dict[str, Any],
     output_path: Union[str, Path],
     overwrite: bool = False,
+    enforce_boundary: bool = False,
+    allowed_root: Optional[Union[str, Path]] = None,
 ) -> Path:
     """Safely write an Excalidraw scene to a local file using atomic rename."""
-    target = Path(output_path).resolve()
+    target = validate_safe_output_path(output_path, enforce_boundary=enforce_boundary, allowed_root=allowed_root)
 
     if target.exists() and not overwrite:
         raise FileSystemError(
@@ -152,18 +183,29 @@ def export_svg(scene: dict[str, Any]) -> str:
                     f'  <path d="{d_str}" fill="none" stroke="{stroke}" stroke-width="{stroke_w}"{marker} />'
                 )
         elif etype == "text":
-            raw_text = elem.get("text", "")
-            escaped_text = saxutils.escape(raw_text)
+            raw_text = str(elem.get("text", ""))
             fsize = elem.get("fontSize", 16)
             align = elem.get("textAlign", "center")
             anchor = "middle" if align == "center" else ("start" if align == "left" else "end")
-
             text_x = round(x + w / 2.0, 1) if align == "center" else x
-            text_y = round(y + h / 2.0 + fsize * 0.35, 1)
 
-            svg_parts.append(
-                f'  <text x="{text_x}" y="{text_y}" font-family="sans-serif" font-size="{fsize}" fill="{stroke}" text-anchor="{anchor}">{escaped_text}</text>'
-            )
+            lines = raw_text.split("\n")
+            if len(lines) <= 1:
+                text_y = round(y + h / 2.0 + fsize * 0.35, 1)
+                escaped = saxutils.escape(raw_text)
+                svg_parts.append(
+                    f'  <text x="{text_x}" y="{text_y}" font-family="sans-serif" font-size="{fsize}" fill="{stroke}" text-anchor="{anchor}">{escaped}</text>'
+                )
+            else:
+                line_height = fsize * 1.25
+                start_y = round(y + (h - (len(lines) - 1) * line_height) / 2.0 + fsize * 0.35, 1)
+                tspans = "".join(
+                    f'<tspan x="{text_x}" y="{round(start_y + idx * line_height, 1)}">{saxutils.escape(line)}</tspan>'
+                    for idx, line in enumerate(lines)
+                )
+                svg_parts.append(
+                    f'  <text font-family="sans-serif" font-size="{fsize}" fill="{stroke}" text-anchor="{anchor}">{tspans}</text>'
+                )
 
     svg_parts.append("</svg>")
     return "\n".join(svg_parts)
@@ -173,9 +215,11 @@ def write_svg_file(
     scene: dict[str, Any],
     output_path: Union[str, Path],
     overwrite: bool = False,
+    enforce_boundary: bool = False,
+    allowed_root: Optional[Union[str, Path]] = None,
 ) -> Path:
     """Export scene to an SVG file safely with atomic write."""
-    target = Path(output_path).resolve()
+    target = validate_safe_output_path(output_path, enforce_boundary=enforce_boundary, allowed_root=allowed_root)
     if target.exists() and not overwrite:
         raise FileSystemError(f"File exists: {target}. Use --overwrite to replace.")
 

@@ -87,3 +87,19 @@ def test_nan_coordinates_rejected() -> None:
     res = validate_excalidraw_scene(scene)
     assert not res.is_valid
     assert any("invalid numeric x" in err for err in res.errors)
+
+
+def test_overlapping_elements_triggers_visual_warning() -> None:
+    scene = {
+        "type": "excalidraw",
+        "version": 2,
+        "elements": [
+            {"id": "box1", "type": "rectangle", "x": 0, "y": 0, "width": 100, "height": 100},
+            {"id": "box2", "type": "rectangle", "x": 50, "y": 50, "width": 100, "height": 100},
+        ],
+        "appState": {},
+        "files": {},
+    }
+    res = validate_excalidraw_scene(scene)
+    assert res.is_valid  # Still valid Excalidraw JSON
+    assert any("overlap in bounding boxes" in w for w in res.warnings)

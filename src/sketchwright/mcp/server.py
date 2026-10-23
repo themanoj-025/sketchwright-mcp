@@ -13,6 +13,7 @@ from sketchwright.mcp.tools import (
     handle_export_diagram,
     handle_get_capabilities,
     handle_layout_diagram,
+    handle_update_diagram,
     handle_validate_diagram,
 )
 from sketchwright.models.diagram import DiagramSpec
@@ -93,6 +94,25 @@ def create_server() -> MCPServer:
         )
 
     @server.tool(
+        name="sketchwright_update_diagram",
+        description="Incrementally update an existing diagram specification (add/remove/rename nodes, add/remove edges) and regenerate scene.",
+    )
+    def update_diagram(
+        specification: dict[str, Any],
+        patch: dict[str, Any],
+        generate_scene: bool = True,
+        output_path: Optional[str] = None,
+        overwrite: bool = False,
+    ) -> dict[str, Any]:
+        return handle_update_diagram(
+            specification=specification,
+            patch=patch,
+            generate_scene=generate_scene,
+            output_path=output_path,
+            overwrite=overwrite,
+        )
+
+    @server.tool(
         name="sketchwright_get_capabilities",
         description="Discover Sketchwright's supported shapes, layout algorithms, directions, and resource limits.",
     )
@@ -122,6 +142,34 @@ def create_server() -> MCPServer:
     def get_manifest() -> str:
         caps = handle_get_capabilities()
         return json.dumps(caps, indent=2)
+
+    @server.resource(
+        "guide://usage",
+        name="usage_guide",
+        description="Short usage guide and prompt engineering reference for Sketchwright.",
+        mime_type="text/markdown",
+    )
+    def get_guide() -> str:
+        return (
+            "# Sketchwright Usage Guide for MCP AI Hosts\n\n"
+            "## Recommended Workflow\n"
+            "1. Call `sketchwright_get_capabilities` to inspect available shapes and limits.\n"
+            "2. Formulate a structured specification matching `schema://v1.0` or lightweight DSL.\n"
+            "3. Call `sketchwright_create_diagram` with your specification.\n"
+            "4. For modifications to an existing diagram, call `sketchwright_update_diagram`.\n"
+            "5. To export or convert to SVG, call `sketchwright_export_diagram`.\n\n"
+            "## Supported Shapes\n"
+            "- `rectangle`: Standard service, module, or component box\n"
+            "- `rounded_rectangle`: Terminal node, queue, or consumer\n"
+            "- `ellipse`: Event, process state, or start/stop\n"
+            "- `diamond`: Decision or branching gateway\n"
+            "- `cylinder`: Database, cache, disk, or data lake\n\n"
+            "## Layout Directions\n"
+            "- `LR`: Left-to-right (recommended for web architectures & pipelines)\n"
+            "- `TB`: Top-to-bottom (recommended for flowcharts & hierarchies)\n"
+            "- `RL`: Right-to-left\n"
+            "- `BT`: Bottom-to-top\n"
+        )
 
     # -------------------------------------------------------------
     # Prompts Registration
@@ -155,6 +203,21 @@ def create_server() -> MCPServer:
             "- Decision branches (shape: diamond)\n"
             "- Directed edges with branch condition labels (e.g., Yes, No, Success, Error)\n"
             "- Layout direction: 'TB' (top to bottom)\n"
+        )
+
+    @server.prompt(
+        name="dependency_graph",
+        description="Prompt guidelines for requesting a software or package dependency graph.",
+    )
+    def prompt_dependency_graph(project_name: str = "Project Dependencies") -> str:
+        return (
+            f"Please generate a dependency graph specification for '{project_name}'.\n"
+            "Include:\n"
+            "- Root package/module nodes (shape: rectangle)\n"
+            "- Intermediate and library dependencies (shape: rounded_rectangle)\n"
+            "- Directed edges pointing from consumer to dependency (e.g., depends_on, imports)\n"
+            "- Layout direction: 'TB' or 'LR'\n"
+            "- Layout algorithm: 'layered'\n"
         )
 
     return server

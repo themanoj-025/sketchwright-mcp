@@ -82,9 +82,9 @@ def handle_create_diagram(
         if output_path:
             p = Path(output_path)
             if p.suffix.lower() == ".svg":
-                target = write_svg_file(result.scene, p, overwrite=overwrite)
+                target = write_svg_file(result.scene, p, overwrite=overwrite, enforce_boundary=True)
             else:
-                target = write_excalidraw_file(result.scene, p, overwrite=overwrite)
+                target = write_excalidraw_file(result.scene, p, overwrite=overwrite, enforce_boundary=True)
             written_path = str(target)
 
         return {
@@ -219,12 +219,12 @@ def handle_export_diagram(
         if fmt == "svg":
             svg_content = export_svg(active_scene)
             if output_path:
-                target = write_svg_file(active_scene, output_path, overwrite=overwrite)
+                target = write_svg_file(active_scene, output_path, overwrite=overwrite, enforce_boundary=True)
                 written_path = str(target)
             content_preview = svg_content[:500]
         else:
             if output_path:
-                target = write_excalidraw_file(active_scene, output_path, overwrite=overwrite)
+                target = write_excalidraw_file(active_scene, output_path, overwrite=overwrite, enforce_boundary=True)
                 written_path = str(target)
             content_preview = json.dumps(active_scene, indent=2)[:500]
 
@@ -237,3 +237,40 @@ def handle_export_diagram(
         }
     except Exception as e:
         raise MCPToolError(f"Export failed: {e}") from e
+
+
+def handle_update_diagram(
+    specification: dict[str, Any],
+    patch: dict[str, Any],
+    generate_scene: bool = True,
+    output_path: Optional[str] = None,
+    overwrite: bool = False,
+) -> dict[str, Any]:
+    """Incrementally update an existing diagram specification and optionally regenerate its scene."""
+    try:
+        val_res, base_spec = validate_raw_input(specification)
+        if not val_res.is_valid or base_spec is None:
+            raise ValidationError(f"Invalid base specification: {'; '.join(val_res.errors)}")
+
+        from sketchwright.engine.updater import update_diagram_spec
+
+        updated_spec = update_diagram_spec(base_spec, patch)
+
+        response: dict[str, Any] = {
+            "updated_specification": updated_spec.model_dump(exclude_none=True),
+            "status": "success",
+        }
+
+        if generate_scene:
+            generator = DiagramGenerator(updated_spec)
+            gen_res = generator.generate()
+            response["scene"] = gen_res.scene
+            response["summary"] = gen_res.to_summary()
+
+            if output_path:
+                target = write_excalidraw_file(gen_res.scene, output_path, overwrite=overwrite, enforce_boundary=True)
+                response["output_file"] = str(target)
+
+        return response
+    except Exception as e:
+        raise MCPToolError(f"Diagram update failed: {e}") from e

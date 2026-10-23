@@ -2,6 +2,8 @@
 
 from typing import Any, Optional
 
+from mcp.server.mcpserver.exceptions import ToolError
+
 
 class SketchwrightError(Exception):
     """Base exception for all Sketchwright errors."""
@@ -42,5 +44,8 @@ class ConfigurationError(SketchwrightError):
     """Raised when configuration validation or limits fail."""
 
 
-class MCPToolError(SketchwrightError):
+class MCPToolError(SketchwrightError, ToolError):
     """Raised when an MCP tool invocation encounters an unrecoverable error."""
+
+    def __init__(self, message: str, details: Optional[dict[str, Any]] = None) -> None:
+        super().__init__(message, details=details)
