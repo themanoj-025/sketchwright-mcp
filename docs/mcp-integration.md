@@ -21,7 +21,7 @@ Add the server definition to `%APPDATA%\Claude\claude_desktop_config.json` (Wind
       "args": [
         "run",
         "--directory",
-        "F:/GITHUB/sketchwright-mcp",
+        "<path-to-sketchwright-mcp>",
         "sketchwright",
         "mcp"
       ]
@@ -31,7 +31,7 @@ Add the server definition to `%APPDATA%\Claude\claude_desktop_config.json` (Wind
 ```
 
 ### Google Antigravity / VS Code Configuration
-Add to your project's `.agents/mcp_config.json` or user settings:
+Add to your project's `.agents/mcp_config.json` or client settings:
 
 ```json
 {
@@ -41,7 +41,7 @@ Add to your project's `.agents/mcp_config.json` or user settings:
       "args": [
         "run",
         "--directory",
-        "F:/GITHUB/sketchwright-mcp",
+        "<path-to-sketchwright-mcp>",
         "sketchwright",
         "mcp"
       ]
@@ -61,24 +61,46 @@ Add to your project's `.agents/mcp_config.json` or user settings:
      - `overwrite`: (optional, default `false`)
    - **Returns**: `{"scene": {...}, "summary": {...}, "validation": {...}}`
 
-2. **`sketchwright_validate_diagram`**
+2. **`sketchwright_update_diagram`**
+   - **Arguments**:
+     - `specification`: (required) existing canonical JSON specification
+     - `patch`: (required) update patch (`add_nodes`, `update_nodes`, `remove_nodes`, `add_edges`, `remove_edges`)
+     - `generate_scene`: (optional, default `true`)
+     - `output_path`: (optional) destination path
+     - `overwrite`: (optional, default `false`)
+   - **Returns**: `{"updated_specification": {...}, "scene": {...}, "summary": {...}}`
+
+3. **`sketchwright_validate_diagram`**
    - **Arguments**: `specification` or `scene`
    - **Returns**: `{"is_valid": true, "errors": [], "warnings": [], "stats": {...}}`
 
-3. **`sketchwright_layout_diagram`**
+4. **`sketchwright_layout_diagram`**
    - **Arguments**: `specification`, optional `algorithm`, `direction`
    - **Returns**: `{"node_positions": {...}, "routes": [...], "canvas": {...}}`
 
-4. **`sketchwright_export_diagram`**
+5. **`sketchwright_export_diagram`**
    - **Arguments**: `specification` or `scene`, `format` ("excalidraw" or "svg"), `output_path`, `overwrite`
    - **Returns**: `{"format": "...", "output_file": "...", "content_preview": "..."}`
 
-5. **`sketchwright_get_capabilities`**
+6. **`sketchwright_get_capabilities`**
    - **Arguments**: none
    - **Returns**: dynamic capabilities manifest including shapes, algorithms, directions, formats, and limits.
+
+## MCP Resources
+
+- **`schema://v1.0`**: Authoritative canonical JSON schema definition for `DiagramSpec`.
+- **`capabilities://manifest`**: Active runtime capability manifest and security limits.
+- **`guide://usage`**: Comprehensive diagram engineering guide and best-practice patterns.
+
+## MCP Prompts
+
+- **`architecture_diagram`**: Standardized prompt template for requesting software architecture diagrams.
+- **`flowchart_diagram`**: Prompt template for decision trees and process workflows.
+- **`dependency_graph`**: Prompt template for package and module dependency graphs.
 
 ## Transport Stdio Discipline
 
 The MCP stdio specification requires that standard output (`stdout`) be reserved strictly for JSON-RPC messages. In Sketchwright:
 - All debug, info, warning, and error logs are routed exclusively to `sys.stderr`.
 - Progress banners and diagnostic tables are suppressed when running in MCP mode.
+

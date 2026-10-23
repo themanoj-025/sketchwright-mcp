@@ -16,11 +16,13 @@ Sketchwright uses defensive defaults that require zero external configuration fo
 | `SKETCHWRIGHT_MAX_NODES` | int | `500` | Maximum number of nodes permitted per diagram. |
 | `SKETCHWRIGHT_MAX_EDGES` | int | `1000` | Maximum number of edges permitted per diagram. |
 | `SKETCHWRIGHT_MAX_LABEL_LENGTH` | int | `256` | Maximum permitted characters for any node/edge label. |
+| `SKETCHWRIGHT_ALLOWED_DIR` | string | *unset* | Path isolation boundary: restricts output file writes to this root directory. |
 
 ## Precedence Order
 
 When determining layout and generation options, Sketchwright applies settings in the following strict order of precedence:
 1. **Explicit API / CLI Argument / Tool Parameter** (highest precedence).
 2. **Diagram Specification `layout` block**.
-3. **Environment Variables (`SKETCHWRIGHT_*`)**.
+3. **Environment Variables (`SKETCHWRIGHT_*`)** (can be configured via `.env` or system environment; see [`.env.example`](../.env.example)).
 4. **Internal Default Settings** (lowest precedence).
+

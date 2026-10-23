@@ -163,7 +163,7 @@ To register Sketchwright in an MCP client (such as Claude Desktop, VS Code, or G
       "args": [
         "run",
         "--directory",
-        "F:/GITHUB/sketchwright-mcp",
+        "<path-to-sketchwright-mcp>",
         "sketchwright",
         "mcp"
       ]
@@ -177,6 +177,7 @@ To register Sketchwright in an MCP client (such as Claude Desktop, VS Code, or G
 | Tool Name | Description |
 | :--- | :--- |
 | `sketchwright_create_diagram` | Generates a complete Excalidraw scene JSON from a structured specification or text DSL. |
+| `sketchwright_update_diagram` | Incrementally updates an existing diagram specification (add/remove/rename nodes, add/remove edges) and regenerates scene. |
 | `sketchwright_validate_diagram` | Validates a diagram specification or Excalidraw scene for schema conformance, bindings, and geometry. |
 | `sketchwright_layout_diagram` | Computes deterministic node coordinates, canvas bounds, and edge routes without serialization. |
 | `sketchwright_export_diagram` | Exports a diagram specification or scene to `.excalidraw` or `.svg`. |
@@ -186,9 +187,11 @@ To register Sketchwright in an MCP client (such as Claude Desktop, VS Code, or G
 - **Resources**:
   - `schema://v1.0`: Canonical JSON Schema for `DiagramSpec`.
   - `capabilities://manifest`: Runtime capability and limits manifest.
+  - `guide://usage`: Comprehensive prompt engineering guide and diagram patterns.
 - **Prompts**:
   - `architecture_diagram`: Prompt guide for structured software architecture requests.
   - `flowchart_diagram`: Prompt guide for workflow/decision flowcharts.
+  - `dependency_graph`: Prompt guide for software/package dependency graphs.
 
 ---
 

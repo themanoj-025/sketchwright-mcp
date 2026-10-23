@@ -6,11 +6,29 @@ readme = "README.md"
 authors = [
     { name = "manoj-025", email = "code.me.025@gmail.com" }
 ]
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.12"
 dependencies = [
     "mcp>=2.3.0",
     "pydantic>=2.14.0",
 ]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Multimedia :: Graphics :: Presentation",
+]
+keywords = ["mcp", "excalidraw", "diagrams", "architecture", "layout-engine"]
+
+[project.urls]
+Homepage = "https://github.com/manoj-025/sketchwright-mcp"
+Repository = "https://github.com/manoj-025/sketchwright-mcp"
+Documentation = "https://github.com/manoj-025/sketchwright-mcp/tree/main/docs"
+"Bug Tracker" = "https://github.com/manoj-025/sketchwright-mcp/issues"
+
 
 [project.scripts]
 sketchwright = "sketchwright.cli:main"
@@ -24,6 +42,7 @@ dev = [
     "mypy>=2.4.0",
     "pytest>=9.1.0",
     "pytest-asyncio>=1.4.0",
+    "pytest-cov>=7.1.0",
     "ruff>=0.17.0",
 ]
 
