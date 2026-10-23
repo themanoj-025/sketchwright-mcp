@@ -58,10 +58,16 @@ class ExcalidrawSerializer:
         salt = self.spec.title or "diagram"
 
         # 1. Generate node shapes and bound text elements
+        group_nodes_rects: dict[str, list[Any]] = {}
+
         for node_id, laid_node in sorted(self.laid_out.nodes.items()):
             shape_elem_id = generate_stable_id("shape", node_id, salt=salt)
             text_elem_id = generate_stable_id("text", node_id, salt=salt)
             node_elem_map[node_id] = shape_elem_id
+
+            group_id = generate_stable_id("group", laid_node.group, salt=salt) if laid_node.group else None
+            if laid_node.group:
+                group_nodes_rects.setdefault(laid_node.group, []).append(laid_node.rect)
 
             shape_elem = self._create_shape_element(
                 elem_id=shape_elem_id,
@@ -69,6 +75,7 @@ class ExcalidrawSerializer:
                 shape=laid_node.shape,
                 rect=laid_node.rect,
                 style=self.spec.style,
+                group_id=group_id,
             )
             elements.append(shape_elem)
             elem_by_id[shape_elem_id] = shape_elem
@@ -80,12 +87,55 @@ class ExcalidrawSerializer:
                 text=laid_node.label,
                 container_rect=laid_node.rect,
                 style=self.spec.style,
+                group_id=group_id,
             )
             elements.append(text_elem)
             elem_by_id[text_elem_id] = text_elem
 
             # Reciprocal binding: shape container references text
             register_bound_element(shape_elem, text_elem_id, "text")
+
+        # 1.5 Generate visual group boundaries/frames for declared groups
+        group_specs = {g.id: g for g in self.spec.groups}
+        for g_id, rects in group_nodes_rects.items():
+            if not rects:
+                continue
+            g_stable_id = generate_stable_id("group", g_id, salt=salt)
+            g_box_id = generate_stable_id("group_box", g_id, salt=salt)
+            g_lbl_id = generate_stable_id("group_lbl", g_id, salt=salt)
+
+            min_gx = min(r.x for r in rects)
+            min_gy = min(r.y for r in rects)
+            max_gx = max(r.right for r in rects)
+            max_gy = max(r.bottom for r in rects)
+
+            pad = 20.0
+            box_x = round(min_gx - pad, 1)
+            box_y = round(min_gy - pad - 16.0, 1)
+            box_w = round((max_gx - min_gx) + 2 * pad, 1)
+            box_h = round((max_gy - min_gy) + 2 * pad + 16.0, 1)
+
+            raw_label = group_specs[g_id].label if g_id in group_specs else None
+            g_label_text: str = str(raw_label) if raw_label else g_id
+
+            group_box = self._create_group_container_element(
+                elem_id=g_box_id,
+                group_id=g_stable_id,
+                x=box_x,
+                y=box_y,
+                width=box_w,
+                height=box_h,
+            )
+            group_lbl = self._create_group_label_element(
+                elem_id=g_lbl_id,
+                group_id=g_stable_id,
+                x=round(box_x + 12.0, 1),
+                y=round(box_y + 4.0, 1),
+                text=g_label_text,
+            )
+            # Insert at beginning so group box sits behind member nodes
+            elements.insert(0, group_box)
+            elements.insert(1, group_lbl)
 
         # 2. Generate arrows and edge labels
         edge_spec_map = {e.id: e for e in self.spec.edges}
@@ -161,6 +211,7 @@ class ExcalidrawSerializer:
         shape: ShapeType,
         rect: Any,
         style: StyleConfig,
+        group_id: Optional[str] = None,
     ) -> dict[str, Any]:
         """Construct an Excalidraw shape element."""
         # Map shape type to Excalidraw element type
@@ -203,7 +254,7 @@ class ExcalidrawSerializer:
             "strokeStyle": "solid",
             "roughness": style.roughness,
             "opacity": 100,
-            "groupIds": [],
+            "groupIds": [group_id] if group_id else [],
             "frameId": None,
             "roundness": roundness,
             "seed": seed,
@@ -224,6 +275,7 @@ class ExcalidrawSerializer:
         text: str,
         container_rect: Any,
         style: StyleConfig,
+        group_id: Optional[str] = None,
     ) -> dict[str, Any]:
         """Construct an Excalidraw text element bound inside a container shape."""
         seed = int(elem_id[:8], 16) % 1_000_000_000
@@ -245,7 +297,7 @@ class ExcalidrawSerializer:
             "strokeStyle": "solid",
             "roughness": 0,
             "opacity": 100,
-            "groupIds": [],
+            "groupIds": [group_id] if group_id else [],
             "frameId": None,
             "roundness": None,
             "seed": seed,
@@ -265,6 +317,101 @@ class ExcalidrawSerializer:
             "containerId": container_id,
             "originalText": text,
             "lineHeight": 1.25,
+        }
+
+    def _create_group_container_element(
+        self,
+        elem_id: str,
+        group_id: str,
+        x: float,
+        y: float,
+        width: float,
+        height: float,
+    ) -> dict[str, Any]:
+        """Construct an Excalidraw visual bounding container for a group of nodes."""
+        seed = int(elem_id[:8], 16) % 1_000_000_000
+        nonce = int(elem_id[8:16], 16) % 1_000_000_000
+        stroke_color = self.palette["arrow"]
+
+        return {
+            "id": elem_id,
+            "type": "rectangle",
+            "x": x,
+            "y": y,
+            "width": width,
+            "height": height,
+            "angle": 0,
+            "strokeColor": stroke_color,
+            "backgroundColor": "transparent",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "strokeStyle": "dashed",
+            "roughness": 0,
+            "opacity": 70,
+            "groupIds": [group_id],
+            "frameId": None,
+            "roundness": {"type": 3},
+            "seed": seed,
+            "version": 1,
+            "versionNonce": nonce,
+            "isDeleted": False,
+            "boundElements": [],
+            "updated": 1,
+            "link": None,
+            "locked": False,
+            "customData": {"groupId": group_id, "isGroupContainer": True},
+        }
+
+    def _create_group_label_element(
+        self,
+        elem_id: str,
+        group_id: str,
+        x: float,
+        y: float,
+        text: str,
+    ) -> dict[str, Any]:
+        """Construct an Excalidraw label for a group container."""
+        seed = int(elem_id[:8], 16) % 1_000_000_000
+        nonce = int(elem_id[8:16], 16) % 1_000_000_000
+        font_size = 13
+        w = round(len(text) * font_size * 0.6 + 8.0, 1)
+        h = round(font_size * 1.3, 1)
+
+        return {
+            "id": elem_id,
+            "type": "text",
+            "x": x,
+            "y": y,
+            "width": w,
+            "height": h,
+            "angle": 0,
+            "strokeColor": self.palette["arrow"],
+            "backgroundColor": "transparent",
+            "fillStyle": "solid",
+            "strokeWidth": 1,
+            "strokeStyle": "solid",
+            "roughness": 0,
+            "opacity": 90,
+            "groupIds": [group_id],
+            "frameId": None,
+            "roundness": None,
+            "seed": seed,
+            "version": 1,
+            "versionNonce": nonce,
+            "isDeleted": False,
+            "boundElements": None,
+            "updated": 1,
+            "link": None,
+            "locked": False,
+            "text": text,
+            "fontSize": font_size,
+            "fontFamily": 2,  # Helvetica
+            "textAlign": "left",
+            "verticalAlign": "top",
+            "baseline": round(font_size * 0.8, 1),
+            "containerId": None,
+            "originalText": text,
+            "lineHeight": 1.2,
         }
 
     def _create_arrow_element(
