@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "title": "Example Web Architecture",
+  "layout": {
+    "algorithm": "layered",
+    "direction": "LR",
+    "node_spacing": 80,
+    "rank_spacing": 120,
+    "padding": 40
+  },
+  "style": {
+    "theme": "light",
+    "font_size": 18,
+    "stroke_width": 2
+  },
+  "nodes": [
+    {
+      "id": "browser",
+      "label": "Web Browser",
+      "shape": "rectangle",
+      "group": null,
+      "metadata": {}
+    },
+    {
+      "id": "api",
+      "label": "API Server",
+      "shape": "rounded_rectangle",
+      "group": null,
+      "metadata": {}
+    },
+    {
+      "id": "cache",
+      "label": "Redis Cache",
+      "shape": "cylinder",
+      "group": null,
+      "metadata": {}
+    },
+    {
+      "id": "database",
+      "label": "Primary Database",
+      "shape": "cylinder",
+      "group": null,
+      "metadata": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "browser-to-api",
+      "source": "browser",
+      "target": "api",
+      "label": "HTTPS",
+      "kind": "directed"
+    },
+    {
+      "id": "api-to-cache",
+      "source": "api",
+      "target": "cache",
+      "label": "TCP",
+      "kind": "directed"
+    },
+    {
+      "id": "api-to-database",
+      "source": "api",
+      "target": "database",
+      "label": "SQL",
+      "kind": "directed"
+    }
+  ],
+  "options": {
+    "deterministic": true
+  }
+}

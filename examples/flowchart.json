@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "title": "Authentication Decision Flowchart",
+  "layout": {
+    "algorithm": "layered",
+    "direction": "TB",
+    "node_spacing": 60,
+    "rank_spacing": 100,
+    "padding": 40
+  },
+  "style": {
+    "theme": "light",
+    "font_size": 16,
+    "stroke_width": 2
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "label": "User Login Request",
+      "shape": "ellipse"
+    },
+    {
+      "id": "check_creds",
+      "label": "Credentials Valid?",
+      "shape": "diamond"
+    },
+    {
+      "id": "gen_token",
+      "label": "Generate JWT Token",
+      "shape": "rectangle"
+    },
+    {
+      "id": "log_failure",
+      "label": "Log Failed Attempt",
+      "shape": "rectangle"
+    },
+    {
+      "id": "success",
+      "label": "Session Established",
+      "shape": "rounded_rectangle"
+    },
+    {
+      "id": "reject",
+      "label": "HTTP 401 Unauthorized",
+      "shape": "rounded_rectangle"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "start",
+      "target": "check_creds",
+      "kind": "directed"
+    },
+    {
+      "id": "e2",
+      "source": "check_creds",
+      "target": "gen_token",
+      "label": "Yes",
+      "kind": "directed"
+    },
+    {
+      "id": "e3",
+      "source": "check_creds",
+      "target": "log_failure",
+      "label": "No",
+      "kind": "directed"
+    },
+    {
+      "id": "e4",
+      "source": "gen_token",
+      "target": "success",
+      "kind": "directed"
+    },
+    {
+      "id": "e5",
+      "source": "log_failure",
+      "target": "reject",
+      "kind": "directed"
+    }
+  ],
+  "options": {
+    "deterministic": true
+  }
+}

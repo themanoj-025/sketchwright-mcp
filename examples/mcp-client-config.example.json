@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "sketchwright": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "F:/GITHUB/sketchwright-mcp",
+        "sketchwright",
+        "mcp"
+      ]
+    }
+  }
+}
