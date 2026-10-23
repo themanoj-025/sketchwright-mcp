@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any, Optional, Union
 
 from sketchwright.engine.generator import DiagramGenerator, GenerationResult
+from sketchwright.engine.updater import DiagramUpdatePatch, update_diagram_spec
 from sketchwright.errors import (
     ConfigurationError,
     FileSystemError,
@@ -118,6 +119,27 @@ def export_diagram(
     return write_excalidraw_file(scene, p, overwrite=overwrite)
 
 
+def update_diagram(
+    specification: Union[dict[str, Any], DiagramSpec],
+    patch: Union[dict[str, Any], DiagramUpdatePatch],
+    output_path: Optional[Union[str, Path]] = None,
+    overwrite: bool = False,
+) -> GenerationResult:
+    """Public Python API: Incrementally mutate a diagram specification and regenerate scene."""
+    if isinstance(specification, dict):
+        val_res, parsed = validate_raw_input(specification)
+        if not val_res.is_valid or parsed is None:
+            raise ValidationError(f"Invalid diagram specification: {'; '.join(val_res.errors)}")
+        spec = parsed
+    elif isinstance(specification, DiagramSpec):
+        spec = specification
+    else:
+        raise ValidationError(f"Unsupported specification type: {type(specification).__name__}")
+
+    updated_spec = update_diagram_spec(spec, patch)
+    return generate_diagram(updated_spec, output_path=output_path, overwrite=overwrite)
+
+
 def get_capabilities() -> dict[str, Any]:
     """Public Python API: Return active runtime capabilities manifest."""
     return handle_get_capabilities()
@@ -127,6 +149,7 @@ __all__ = [
     "ConfigurationError",
     "DiagramOptions",
     "DiagramSpec",
+    "DiagramUpdatePatch",
     "FileSystemError",
     "GenerationResult",
     "LaidOutDiagram",
@@ -140,5 +163,6 @@ __all__ = [
     "generate_diagram",
     "get_capabilities",
     "layout_diagram",
+    "update_diagram",
     "validate_diagram",
 ]
