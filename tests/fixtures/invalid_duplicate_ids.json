@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "title": "Invalid Duplicates",
+  "nodes": [
+    { "id": "dup", "label": "First" },
+    { "id": "dup", "label": "Second Duplicate" }
+  ],
+  "edges": []
+}

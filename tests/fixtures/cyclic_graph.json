@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "title": "Cyclic State Machine",
+  "layout": { "algorithm": "layered", "direction": "LR" },
+  "nodes": [
+    { "id": "idle", "label": "Idle State", "shape": "rounded_rectangle" },
+    { "id": "processing", "label": "Processing State", "shape": "rectangle" },
+    { "id": "retry", "label": "Retry Wait", "shape": "diamond" }
+  ],
+  "edges": [
+    { "id": "e1", "source": "idle", "target": "processing", "label": "start" },
+    { "id": "e2", "source": "processing", "target": "retry", "label": "failure" },
+    { "id": "e3", "source": "retry", "target": "processing", "label": "retry" },
+    { "id": "e4", "source": "processing", "target": "idle", "label": "done" }
+  ]
+}

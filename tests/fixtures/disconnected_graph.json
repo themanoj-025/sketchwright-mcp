@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "title": "Disconnected Clusters",
+  "layout": { "algorithm": "layered", "direction": "LR" },
+  "nodes": [
+    { "id": "c1_a", "label": "Cluster 1 A", "shape": "rectangle" },
+    { "id": "c1_b", "label": "Cluster 1 B", "shape": "rectangle" },
+    { "id": "c2_x", "label": "Cluster 2 X", "shape": "ellipse" },
+    { "id": "c2_y", "label": "Cluster 2 Y", "shape": "ellipse" },
+    { "id": "isolated", "label": "Standalone Node", "shape": "cylinder" }
+  ],
+  "edges": [
+    { "id": "e1", "source": "c1_a", "target": "c1_b", "kind": "directed" },
+    { "id": "e2", "source": "c2_x", "target": "c2_y", "kind": "directed" }
+  ]
+}

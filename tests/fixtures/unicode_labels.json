@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "title": "Internationalization & Unicode: 架构 · サービス · 🚀",
+  "layout": { "algorithm": "layered", "direction": "LR" },
+  "nodes": [
+    { "id": "client", "label": "Client 客户端 🌐", "shape": "rectangle" },
+    { "id": "service", "label": "Microservice 服务 ⚙️\n(Multi-line 日本語)", "shape": "rounded_rectangle" },
+    { "id": "db", "label": "Database ฐานข้อมูล 🗄️", "shape": "cylinder" }
+  ],
+  "edges": [
+    { "id": "e1", "source": "client", "target": "service", "label": "Request 请求", "kind": "directed" },
+    { "id": "e2", "source": "service", "target": "db", "label": "Query 쿼리", "kind": "directed" }
+  ]
+}
