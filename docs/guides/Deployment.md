@@ -163,16 +163,16 @@ In Cursor Settings > Features > MCP:
 
 | Document | Relationship & Cross-Reference |
 |---|---|
-| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/PRD.md) | Maps release bar to release criteria in Section 11. |
-| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/TechSpec.md) | Details packaging architecture and dependency specifications. |
-| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/AppFlow.md) | Outlines entry points activated during deployment. |
-| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/Design.md) | Enforces asset packaging requirements. |
-| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) | Provides data models that determine major SemVer release bumps. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/ImplementationPlan.md) | Outlines Phase 4 rollout tasks (`TASK-4.3`, `TASK-4.4`). |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/Tracker.md) | Tracks the active deployment status and release timeline. |
-| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/Rules.md) | Governs git workflow and branching conventions. |
-| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/API.md) | Documents the versioning policy for all public endpoints. |
-| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/SecurityAndCompliance.md) | Details OIDC authentication and supply chain security. |
-| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/Testing.md) | Specifies CI test gates required prior to release promotion. |
-| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/Glossary.md) | Defines packaging terms such as wheel, sdist, and OIDC. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/RiskRegister.md) | Documents deployment failure risks and mitigations. |
+| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | Maps release bar to release criteria in Section 11. |
+| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Details packaging architecture and dependency specifications. |
+| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Outlines entry points activated during deployment. |
+| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Enforces asset packaging requirements. |
+| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Provides data models that determine major SemVer release bumps. |
+| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Outlines Phase 4 rollout tasks (`TASK-4.3`, `TASK-4.4`). |
+| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Tracks the active deployment status and release timeline. |
+| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Governs git workflow and branching conventions. |
+| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Documents the versioning policy for all public endpoints. |
+| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Details OIDC authentication and supply chain security. |
+| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Specifies CI test gates required prior to release promotion. |
+| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Defines packaging terms such as wheel, sdist, and OIDC. |
+| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Documents deployment failure risks and mitigations. |

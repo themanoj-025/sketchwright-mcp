@@ -204,16 +204,16 @@ All CLI commands exit with standard POSIX codes:
 
 | Document | Relationship & Cross-Reference |
 |---|---|
-| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/PRD.md) | Maps API endpoints to user stories (`US-001`, `US-002`) and requirements (`REQ-009`, `REQ-010`). |
-| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/TechSpec.md) | Describes the internal handler architecture implementing these endpoints. |
-| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/AppFlow.md) | Maps CLI endpoints to screens and state transitions (`SCR-001` through `SCR-007`). |
-| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/Design.md) | Defines visual styles rendered by the output generation APIs. |
-| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) | Defines the Pydantic data schemas consumed by API request payloads. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/ImplementationPlan.md) | Outlines delivery tasks for the FastMCP server (`TASK-3.1`) and CLI (`TASK-3.3`). |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/Tracker.md) | Tracks the deployment and testing status of each API endpoint. |
-| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/Rules.md) | Governs stdio protocol isolation and prohibited logging patterns. |
-| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/SecurityAndCompliance.md) | Details authentication, input sanitization, and size limits applied to APIs. |
-| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/Testing.md) | Outlines API contract test cases and automated regression suites. |
-| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/Deployment.md) | Details packaging and distribution of the CLI and MCP entry points. |
-| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/Glossary.md) | Defines terminology such as FastMCP, JSON-RPC, and stdio framing. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/RiskRegister.md) | Documents API-related risks including stdio corruption and input payload denial of service. |
+| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | Maps API endpoints to user stories (`US-001`, `US-002`) and requirements (`REQ-009`, `REQ-010`). |
+| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Describes the internal handler architecture implementing these endpoints. |
+| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Maps CLI endpoints to screens and state transitions (`SCR-001` through `SCR-007`). |
+| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Defines visual styles rendered by the output generation APIs. |
+| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Defines the Pydantic data schemas consumed by API request payloads. |
+| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Outlines delivery tasks for the FastMCP server (`TASK-3.1`) and CLI (`TASK-3.3`). |
+| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Tracks the deployment and testing status of each API endpoint. |
+| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Governs stdio protocol isolation and prohibited logging patterns. |
+| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Details authentication, input sanitization, and size limits applied to APIs. |
+| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Outlines API contract test cases and automated regression suites. |
+| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Details packaging and distribution of the CLI and MCP entry points. |
+| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Defines terminology such as FastMCP, JSON-RPC, and stdio framing. |
+| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Documents API-related risks including stdio corruption and input payload denial of service. |

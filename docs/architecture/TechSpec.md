@@ -232,16 +232,16 @@ sequenceDiagram
 
 | Document | Relationship & Cross-Reference |
 |---|---|
-| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/PRD.md) | High-level product requirements and persona definitions. |
-| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/AppFlow.md) | Maps CLI and MCP states to engine pipeline execution steps. |
-| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/Design.md) | Dictates the visual styling tokens and Excalidraw element properties. |
-| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) | Concrete Pydantic model schemas and Excalidraw element JSON data structures. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/ImplementationPlan.md) | Phased task sequencing and architectural dependency graph. |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/Tracker.md) | Living execution status of layout and architecture tasks. |
-| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/Rules.md) | Operating rules and coding standards governing architecture implementation. |
-| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/API.md) | FastMCP tool signatures, CLI argument specifications, and Python interfaces. |
-| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/SecurityAndCompliance.md) | Detailed sandbox mechanics and threat mitigations. |
-| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/Testing.md) | Test suite breakdown, determinism assertions, and coverage gates. |
-| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/Deployment.md) | CI/CD build configuration and package release procedures. |
-| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/Glossary.md) | Technical definitions for layout and architecture vocabulary. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/RiskRegister.md) | Architectural and operational risks with mitigations. |
+| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | High-level product requirements and persona definitions. |
+| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Maps CLI and MCP states to engine pipeline execution steps. |
+| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Dictates the visual styling tokens and Excalidraw element properties. |
+| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Concrete Pydantic model schemas and Excalidraw element JSON data structures. |
+| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Phased task sequencing and architectural dependency graph. |
+| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Living execution status of layout and architecture tasks. |
+| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Operating rules and coding standards governing architecture implementation. |
+| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | FastMCP tool signatures, CLI argument specifications, and Python interfaces. |
+| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Detailed sandbox mechanics and threat mitigations. |
+| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Test suite breakdown, determinism assertions, and coverage gates. |
+| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | CI/CD build configuration and package release procedures. |
+| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Technical definitions for layout and architecture vocabulary. |
+| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Architectural and operational risks with mitigations. |

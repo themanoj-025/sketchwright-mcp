@@ -363,7 +363,7 @@ Sketchwright works out of the box with zero external configuration. Settings can
 }
 ```
 
-See [`docs/Schema.md`](./docs/Schema.md) for detailed schema specifications.
+See [`docs/architecture/Schema.md`](./docs/architecture/Schema.md) for detailed schema specifications.
 
 ---
 
@@ -374,25 +374,30 @@ Derived from verified repository source files:
 ```text
 sketchwright-mcp/
 ├── .github/workflows/ci.yml       # Cross-platform GitHub Actions CI (Linux, Windows)
-├── docs/                          # Comprehensive technical documentation & suite
-│   ├── decisions/                 # Architecture Decision Records (ADRs)
-│   ├── migration/                 # Restructuring audit records and runbooks
-│   ├── PRD.md                     # Product Requirements Document
-│   ├── TechSpec.md                # System design, layout pipeline and C4 architecture
-│   ├── AppFlow.md                 # State inventory and navigation maps
-│   ├── Design.md                  # Visual identity and Excalidraw styling tokens
-│   ├── Schema.md                  # Canonical specification & Pydantic data models
-│   ├── ImplementationPlan.md      # Phased engineering plan and build sequencing
-│   ├── Tracker.md                 # Living project status and milestone burndown
-│   ├── Rules.md                   # Repository constitution and AI agent rules
-│   ├── API.md                     # FastMCP tool signatures and CLI contracts
-│   ├── SecurityAndCompliance.md   # STRIDE threat model and security boundaries
-│   ├── Testing.md                 # Test strategy, critical test cases and coverage
-│   ├── Deployment.md              # Build, release, PyPI publishing and client configs
-│   ├── Glossary.md                # Domain terms and definitions dictionary
-│   ├── RiskRegister.md            # Risk matrix, mitigations and active triggers
-│   ├── configuration.md           # Environment variables and limits
-│   └── troubleshooting.md         # Diagnostic procedures and FAQ
+├── docs/                          # Comprehensive technical documentation suite
+│   ├── README.md                  # Documentation suite index & master navigation map
+│   ├── product/                   # PRD, user journeys, app flows, and terminology glossary
+│   │   ├── PRD.md                 # Product Requirements Document
+│   │   ├── AppFlow.md             # State inventory, CLI trees & MCP protocol lifecycles
+│   │   └── Glossary.md            # Canonical terminology & domain dictionary
+│   ├── architecture/              # Technical specs, design tokens, schemas, APIs & ADRs
+│   │   ├── TechSpec.md            # System design, layout pipeline & C4 architecture
+│   │   ├── Design.md              # Visual identity & Excalidraw styling tokens
+│   │   ├── Schema.md              # Canonical specification & Pydantic data models
+│   │   ├── API.md                 # FastMCP tool signatures & CLI contracts
+│   │   └── decisions/             # Architecture Decision Records (ADRs)
+│   ├── guides/                    # Operational runbooks, configurations & user handbooks
+│   │   ├── configuration.md       # Environment variables & tuning limits
+│   │   ├── Deployment.md          # Build, release, PyPI publishing & client configs
+│   │   ├── troubleshooting.md     # Diagnostic procedures & error resolutions
+│   │   └── SecurityAndCompliance.md # STRIDE threat model & security boundaries
+│   └── development/               # Engineering standards, testing & delivery tracking
+│       ├── Rules.md               # Repository constitution & AI agent operating rules
+│       ├── testing.md             # Test strategy, critical test cases & coverage
+│       ├── ImplementationPlan.md  # Phased engineering roadmap & build sequencing
+│       ├── Tracker.md             # Living task progress & milestone burndown
+│       ├── RiskRegister.md        # Risk matrix, mitigations & active triggers
+│       └── migration/             # Historical restructuring records & verification reports
 ├── examples/                      # Runnable samples and test fixtures
 │   ├── architecture.json          # Multi-tier microservice architecture spec
 │   ├── flowchart.json             # Branching process flowchart spec

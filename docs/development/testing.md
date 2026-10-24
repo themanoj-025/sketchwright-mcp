@@ -122,16 +122,16 @@ flowchart LR
 
 | Document | Relationship & Cross-Reference |
 |---|---|
-| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/PRD.md) | Maps test cases (`TC-###`) back to acceptance criteria in user stories (`US-###`). |
-| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/TechSpec.md) | Outlines component architecture validated by the unit test suite. |
-| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/AppFlow.md) | Details screen transitions and CLI error codes verified in test cases. |
-| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/Design.md) | Enforces visual styling assertions tested in SVG and Excalidraw suites. |
-| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) | Supplies Pydantic validation schemas tested in parser verification. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/ImplementationPlan.md) | Tracks execution of test framework tasks (`TASK-0.4`, `TASK-4.1`). |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/Tracker.md) | Reports the live test pass rate and blocker resolutions. |
-| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/Rules.md) | Enforces test coverage minimums (`RULE-007`) and testing operating rules. |
-| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/API.md) | Defines contract interfaces validated in integration tests. |
-| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/SecurityAndCompliance.md) | Details security fuzzing and path traversal defenses validated by tests. |
-| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/Deployment.md) | Specifies CI pipeline gates and release automation. |
-| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/Glossary.md) | Defines testing terminology including golden fixtures and determinism. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/RiskRegister.md) | Documents quality risks and test mitigations. |
+| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | Maps test cases (`TC-###`) back to acceptance criteria in user stories (`US-###`). |
+| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Outlines component architecture validated by the unit test suite. |
+| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Details screen transitions and CLI error codes verified in test cases. |
+| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Enforces visual styling assertions tested in SVG and Excalidraw suites. |
+| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Supplies Pydantic validation schemas tested in parser verification. |
+| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Tracks execution of test framework tasks (`TASK-0.4`, `TASK-4.1`). |
+| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Reports the live test pass rate and blocker resolutions. |
+| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Enforces test coverage minimums (`RULE-007`) and testing operating rules. |
+| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Defines contract interfaces validated in integration tests. |
+| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Details security fuzzing and path traversal defenses validated by tests. |
+| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Specifies CI pipeline gates and release automation. |
+| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Defines testing terminology including golden fixtures and determinism. |
+| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Documents quality risks and test mitigations. |

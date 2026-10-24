@@ -133,10 +133,10 @@ flowchart LR
 
 When an autonomous AI agent (e.g., Claude, Cursor, Windsurf) operates in this repository, it MUST adhere to the following imperative rules:
 
-1. **`AGT-001` Consult the Living Documents First**: Always review [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/Tracker.md) and [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/ImplementationPlan.md) prior to beginning any code modification.
+1. **`AGT-001` Consult the Living Documents First**: Always review [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) and [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) prior to beginning any code modification.
 2. **`AGT-002` Never Mark Done Without Passing Tests**: Never flip a task status to `🟢 Done` in `Tracker.md` until `uv run pytest` executes with 100% success and zero regressions.
 3. **`AGT-003` Zero Assumption Policy**: Never invent undocumented CLI arguments, schema fields, or protocol behavior. If a user request is ambiguous, stop and ask for clarification or propose a structured choice.
-4. **`AGT-004` Synchronized Documentation**: Any change that modifies a data structure in `src/sketchwright/models/` or an Excalidraw element property in `src/sketchwright/excalidraw/` MUST be accompanied by a same-commit update to [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md).
+4. **`AGT-004` Synchronized Documentation**: Any change that modifies a data structure in `src/sketchwright/models/` or an Excalidraw element property in `src/sketchwright/excalidraw/` MUST be accompanied by a same-commit update to [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md).
 5. **`AGT-005` Never Suppress Type Safety**: Never add `# type: ignore` or `# noqa` simply to pass CI. Fix the underlying type signature or refactor the offending expression.
 6. **`AGT-006` Zero Stdio Pollution**: Never insert `print()` statements for debugging into `src/sketchwright/mcp_server.py` or underlying engine modules. Use `logging.getLogger(__name__)` configured to output strictly to `stderr`.
 
@@ -169,7 +169,7 @@ When an autonomous AI agent (e.g., Claude, Cursor, Windsurf) operates in this re
 |---|:---:|:---:|
 | Refactoring internal layout algorithms without changing public API | ✅ | |
 | Adding unit and integration tests | ✅ | |
-| Updating `docs/Tracker.md` following successful test execution | ✅ | |
+| Updating `docs/development/Tracker.md` following successful test execution | ✅ | |
 | Adding new internal helper functions or data models | ✅ | |
 | Modifying public CLI commands or flags | | 🛑 Human Approval Required |
 | Introducing a new external PyPI dependency | | 🛑 Human Approval Required |
@@ -182,16 +182,16 @@ When an autonomous AI agent (e.g., Claude, Cursor, Windsurf) operates in this re
 
 | Document | Relationship & Cross-Reference |
 |---|---|
-| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/PRD.md) | Defines system goals (`G-###`) and user stories (`US-###`) enforced by these rules. |
-| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/TechSpec.md) | Documents architectural boundaries and module contracts governed by this constitution. |
-| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/AppFlow.md) | Specifies UI states and error diagnostics enforced in Section 1. |
-| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/Design.md) | Enforces visual styling tokens and accessibility standards for generated elements. |
-| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) | Provides the data schema that must be synchronized upon any model modification. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/ImplementationPlan.md) | Establishes the phased task list that AI agents must consult before starting work. |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/Tracker.md) | Living status tracker updated in compliance with `AGT-002`. |
-| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/API.md) | Defines the contract interfaces protected by escalation rules. |
-| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/SecurityAndCompliance.md) | Expands upon the security baseline rules defined in Section 6. |
-| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/Testing.md) | Details the test suites and coverage requirements mandated by `RULE-007`. |
-| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/Deployment.md) | Outlines release and CI/CD operations governed by Section 3. |
-| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/Glossary.md) | Defines terminology referenced throughout these rules. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/RiskRegister.md) | Documents risks associated with violating repository invariants. |
+| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | Defines system goals (`G-###`) and user stories (`US-###`) enforced by these rules. |
+| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Documents architectural boundaries and module contracts governed by this constitution. |
+| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Specifies UI states and error diagnostics enforced in Section 1. |
+| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Enforces visual styling tokens and accessibility standards for generated elements. |
+| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Provides the data schema that must be synchronized upon any model modification. |
+| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Establishes the phased task list that AI agents must consult before starting work. |
+| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Living status tracker updated in compliance with `AGT-002`. |
+| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Defines the contract interfaces protected by escalation rules. |
+| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Expands upon the security baseline rules defined in Section 6. |
+| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Details the test suites and coverage requirements mandated by `RULE-007`. |
+| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Outlines release and CI/CD operations governed by Section 3. |
+| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Defines terminology referenced throughout these rules. |
+| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Documents risks associated with violating repository invariants. |

@@ -160,16 +160,16 @@ flowchart TD
 ## 13. Related Documents
 | Document | Relationship & Cross-Reference |
 |---|---|
-| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/TechSpec.md) | Technical architecture, data flow diagrams, and component breakdown. |
-| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/AppFlow.md) | Execution states, CLI option trees, and MCP request-response lifecycles. |
-| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/Design.md) | Excalidraw visual style tokens, stroke palettes, and font sizing rules. |
-| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) | Pydantic data models and Excalidraw element JSON data structures. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/ImplementationPlan.md) | Phased task breakdown and engineering milestones. |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/Tracker.md) | Real-time status dashboard and task completion progress. |
-| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/Rules.md) | Coding standards, Git conventions, and AI agent operating instructions. |
-| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/API.md) | Detailed MCP tool schemas, CLI flags, and Python facade APIs. |
-| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/SecurityAndCompliance.md) | Threat model, sandbox confinements, and input limit defenses. |
-| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/Testing.md) | Test pyramid, determinism test strategies, and coverage goals. |
-| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/Deployment.md) | Package distribution, PyPI release workflows, and CI validation. |
-| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/Glossary.md) | Canonical domain definitions and terminology dictionary. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/RiskRegister.md) | Exhaustive failure mode analysis, mitigations, and owner assignments. |
+| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Technical architecture, data flow diagrams, and component breakdown. |
+| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Execution states, CLI option trees, and MCP request-response lifecycles. |
+| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Excalidraw visual style tokens, stroke palettes, and font sizing rules. |
+| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Pydantic data models and Excalidraw element JSON data structures. |
+| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Phased task breakdown and engineering milestones. |
+| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Real-time status dashboard and task completion progress. |
+| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Coding standards, Git conventions, and AI agent operating instructions. |
+| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Detailed MCP tool schemas, CLI flags, and Python facade APIs. |
+| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Threat model, sandbox confinements, and input limit defenses. |
+| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Test pyramid, determinism test strategies, and coverage goals. |
+| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Package distribution, PyPI release workflows, and CI validation. |
+| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Canonical domain definitions and terminology dictionary. |
+| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Exhaustive failure mode analysis, mitigations, and owner assignments. |

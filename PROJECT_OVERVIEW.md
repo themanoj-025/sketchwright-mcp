@@ -205,7 +205,7 @@ This documentation provides four distinct reading layers designed for different 
 
 *Layer: L1*
 
-Sketchwright is a domain-specific layout engine and Model Context Protocol (MCP) server engineered to solve a pervasive failure mode in AI-generated technical documentation: unstructured, visually chaotic, and overlapping diagrams [VERIFIED: `README.md:L5-L10`]. When Large Language Model (LLM) agents are prompted to produce visual artifacts, they regularly emit hand-calculated coordinates that collapse elements into collisions, misalign connector arrows, or generate raw canvas payloads incompatible with standard diagram editors [INFERRED: from design problems solved in `docs/decisions/0002-deterministic-layout.md:L3-L9`]. Sketchwright eliminates coordinate calculation from the model's responsibility, replacing it with an authoritative, deterministic layout pipeline [VERIFIED: `src/sketchwright/layout/engine.py:L1-L128`].
+Sketchwright is a domain-specific layout engine and Model Context Protocol (MCP) server engineered to solve a pervasive failure mode in AI-generated technical documentation: unstructured, visually chaotic, and overlapping diagrams [VERIFIED: `README.md:L5-L10`]. When Large Language Model (LLM) agents are prompted to produce visual artifacts, they regularly emit hand-calculated coordinates that collapse elements into collisions, misalign connector arrows, or generate raw canvas payloads incompatible with standard diagram editors [INFERRED: from design problems solved in `docs/architecture/decisions/0002-deterministic-layout.md:L3-L9`]. Sketchwright eliminates coordinate calculation from the model's responsibility, replacing it with an authoritative, deterministic layout pipeline [VERIFIED: `src/sketchwright/layout/engine.py:L1-L128`].
 
 The system exposes a dual interface: a standard Command-Line Interface (CLI) for local script automation and CI pipelines, and a Model Context Protocol (MCP) server operating over standard input/output (`stdio`) [VERIFIED: `src/sketchwright/cli.py:L79-L83`, `src/sketchwright/mcp/server.py:L226-L236`]. Through MCP tools (`sketchwright_create_diagram`, `sketchwright_validate_diagram`, `sketchwright_layout_diagram`, `sketchwright_export_diagram`, `sketchwright_update_diagram`, and `sketchwright_get_capabilities`), AI host environments such as Claude Desktop, Cursor, or custom agent runtimes can discover available shapes, submit lightweight graph specifications (JSON or text DSL), apply incremental delta updates, and receive valid Excalidraw v2 scene JSON or standalone SVG files [VERIFIED: `src/sketchwright/mcp/tools.py:L31-L276`].
 
@@ -680,17 +680,17 @@ sketchwright-mcp/                               # Repository root
 | `CHANGELOG.md` | [`f-changelog-md`](#f-changelog-md) | T4 | Markdown | 24 | Semantic release notes and chronological change log | 0 | Low |
 | `CONTRIBUTING.md` | [`f-contributing-md`](#f-contributing-md) | T4 | Markdown | 43 | Contributor workflow, setup commands, and testing expectations | 0 | Low |
 | `docs/architecture.md` | [`f-docs-architecture-md`](#f-docs-architecture-md) | T4 | Markdown | 72 | Technical architecture documentation and component diagrams | 0 | Low |
-| `docs/configuration.md` | [`f-docs-configuration-md`](#f-docs-configuration-md) | T4 | Markdown | 28 | Comprehensive environment variable and settings documentation | 0 | Low |
-| `docs/decisions/0001-mcp-v2-sdk.md` | [`f-docs-decisions-0001-mcp-v2-sdk-md`](#f-docs-decisions-0001-mcp-v2-sdk-md) | T4 | Markdown | 16 | ADR: Selection of official Python Model Context Protocol v2 SDK | 0 | Low |
-| `docs/decisions/0002-deterministic-layout.md` | [`f-docs-decisions-0002-deterministic-layout-md`](#f-docs-decisions-0002-deterministic-layout-md) | T4 | Markdown | 17 | ADR: Native deterministic graph layout engine implementation | 0 | Low |
-| `docs/decisions/0003-pypi-naming-and-updates.md` | [`f-docs-decisions-0003-pypi-naming-and-updates-md`](#f-docs-decisions-0003-pypi-naming-and-updates-md) | T4 | Markdown | 28 | ADR: Packaging namespace decision and incremental diagram updates | 0 | Low |
+| `docs/guides/configuration.md` | [`f-docs-configuration-md`](#f-docs-configuration-md) | T4 | Markdown | 28 | Comprehensive environment variable and settings documentation | 0 | Low |
+| `docs/architecture/decisions/0001-mcp-v2-sdk.md` | [`f-docs-decisions-0001-mcp-v2-sdk-md`](#f-docs-decisions-0001-mcp-v2-sdk-md) | T4 | Markdown | 16 | ADR: Selection of official Python Model Context Protocol v2 SDK | 0 | Low |
+| `docs/architecture/decisions/0002-deterministic-layout.md` | [`f-docs-decisions-0002-deterministic-layout-md`](#f-docs-decisions-0002-deterministic-layout-md) | T4 | Markdown | 17 | ADR: Native deterministic graph layout engine implementation | 0 | Low |
+| `docs/architecture/decisions/0003-pypi-naming-and-updates.md` | [`f-docs-decisions-0003-pypi-naming-and-updates-md`](#f-docs-decisions-0003-pypi-naming-and-updates-md) | T4 | Markdown | 28 | ADR: Packaging namespace decision and incremental diagram updates | 0 | Low |
 | `docs/diagram-format.md` | [`f-docs-diagram-format-md`](#f-docs-diagram-format-md) | T4 | Markdown | 65 | Complete schema specification for JSON and text DSL formats | 0 | Low |
 | `docs/installation.md` | [`f-docs-installation-md`](#f-docs-installation-md) | T4 | Markdown | 58 | Detailed installation instructions for uv, pip, pipx, and git | 0 | Low |
 | `docs/layout-engine.md` | [`f-docs-layout-engine-md`](#f-docs-layout-engine-md) | T4 | Markdown | 46 | Mathematical explanation of Sugiyama layered layout implementation | 0 | Low |
 | `docs/mcp-integration.md` | [`f-docs-mcp-integration-md`](#f-docs-mcp-integration-md) | T4 | Markdown | 106 | Client configuration instructions for Claude Desktop and Cursor | 0 | Low |
 | `docs/security.md` | [`f-docs-security-md`](#f-docs-security-md) | T4 | Markdown | 29 | Security policy, resource limits, and filesystem sandboxing notes | 0 | Low |
-| `docs/testing.md` | [`f-docs-testing-md`](#f-docs-testing-md) | T4 | Markdown | 39 | Testing framework guide, fixture documentation, and test commands | 0 | Low |
-| `docs/troubleshooting.md` | [`f-docs-troubleshooting-md`](#f-docs-troubleshooting-md) | T4 | Markdown | 54 | Diagnostic procedures and solutions for common setup issues | 0 | Low |
+| `docs/development/testing.md` | [`f-docs-testing-md`](#f-docs-testing-md) | T4 | Markdown | 39 | Testing framework guide, fixture documentation, and test commands | 0 | Low |
+| `docs/guides/troubleshooting.md` | [`f-docs-troubleshooting-md`](#f-docs-troubleshooting-md) | T4 | Markdown | 54 | Diagnostic procedures and solutions for common setup issues | 0 | Low |
 | `examples/architecture.json` | [`f-examples-architecture-json`](#f-examples-architecture-json) | T3 | JSON | 72 | Full reference example of a web application architecture diagram | 1 | Low |
 | `examples/flowchart.json` | [`f-examples-flowchart-json`](#f-examples-flowchart-json) | T3 | JSON | 85 | Reference decision flowchart demonstrating top-to-bottom layout | 1 | Low |
 | `examples/hello_world.py` | [`f-examples-hello-world-py`](#f-examples-hello-world-py) | T1 | Python | 21 | Standalone Python script demonstrating basic API usage | 0 | Low |
@@ -905,22 +905,22 @@ sketchwright-mcp/                               # Repository root
 - **Purpose:** Architectural overview detailing component relationships, pipeline stages, and design principles.
 
 <a id="f-docs-configuration-md"></a>
-#### 📄 `docs/configuration.md`
+#### 📄 `docs/guides/configuration.md`
 - **Type · Tier · LOC:** Documentation · `T4` · 28 lines
 - **Purpose:** Reference manual detailing environment variables, configuration precedence, and limit overrides.
 
 <a id="f-docs-decisions-0001-mcp-v2-sdk-md"></a>
-#### 📄 `docs/decisions/0001-mcp-v2-sdk.md`
+#### 📄 `docs/architecture/decisions/0001-mcp-v2-sdk.md`
 - **Type · Tier · LOC:** Architecture Decision Record · `T4` · 16 lines
 - **Purpose:** Documents the decision to adopt the official Python Model Context Protocol v2 SDK for stdio transport and standard tool decorators.
 
 <a id="f-docs-decisions-0002-deterministic-layout-md"></a>
-#### 📄 `docs/decisions/0002-deterministic-layout.md`
+#### 📄 `docs/architecture/decisions/0002-deterministic-layout.md`
 - **Type · Tier · LOC:** Architecture Decision Record · `T4` · 17 lines
 - **Purpose:** Documents the decision to implement a custom Python layout engine instead of shelling out to system Graphviz binaries.
 
 <a id="f-docs-decisions-0003-pypi-naming-and-updates-md"></a>
-#### 📄 `docs/decisions/0003-pypi-naming-and-updates.md`
+#### 📄 `docs/architecture/decisions/0003-pypi-naming-and-updates.md`
 - **Type · Tier · LOC:** Architecture Decision Record · `T4` · 28 lines
 - **Purpose:** Documents package distribution naming (`sketchwright`) and the design of incremental diagram update mechanics.
 
@@ -950,12 +950,12 @@ sketchwright-mcp/                               # Repository root
 - **Purpose:** Security architecture reference covering resource bounds, atomic file replacement, and path isolation.
 
 <a id="f-docs-testing.md"></a>
-#### 📄 `docs/testing.md`
+#### 📄 `docs/development/testing.md`
 - **Type · Tier · LOC:** Documentation · `T4` · 39 lines
 - **Purpose:** Test architecture guide describing unit, integration, contract, and e2e test categories.
 
 <a id="f-docs-troubleshooting.md"></a>
-#### 📄 `docs/troubleshooting.md`
+#### 📄 `docs/guides/troubleshooting.md`
 - **Type · Tier · LOC:** Documentation · `T4` · 54 lines
 - **Purpose:** Frequently encountered error messages and actionable remediation steps.
 
@@ -1707,7 +1707,7 @@ Sketchwright is engineered as an **AI Agent Tool**; it does not embed an interna
 
 ### Context Window Optimization
 - **Lightweight Text DSL:** When token limits are constrained, agents can emit text DSL (e.g., `node: a [Web Client]`, `edge: a -> b [HTTPS]`), which uses approximately 75% fewer tokens than full JSON specifications [DOCUMENTED: `docs/diagram-format.md:L35-L50`].
-- **Delta Updating:** Rather than re-generating an entire 50-node diagram when one component changes, agents emit a compact `DiagramUpdatePatch` with `add_nodes` or `remove_nodes`, reducing context exchange by up to 90% [DOCUMENTED: `docs/decisions/0003-pypi-naming-and-updates.md:L15-L25`].
+- **Delta Updating:** Rather than re-generating an entire 50-node diagram when one component changes, agents emit a compact `DiagramUpdatePatch` with `add_nodes` or `remove_nodes`, reducing context exchange by up to 90% [DOCUMENTED: `docs/architecture/decisions/0003-pypi-naming-and-updates.md:L15-L25`].
 
 ---
 
@@ -2326,7 +2326,7 @@ Sketchwright is distributed under the **MIT License** [VERIFIED: [`LICENSE:L1-L2
 *Layer: L2*
 
 #### Q1: Why does Sketchwright not use Graphviz (`dot`) under the hood?
-**Answer:** Graphviz requires external system binaries (`apt-get install graphviz` or `brew install graphviz`) which fail silently in constrained container environments, serverless functions, and minimal developer machines. Furthermore, Graphviz does not synthesize Excalidraw's unique reciprocal container bindings or hand-drawn rough styling. Sketchwright implements a pure Python layout engine with zero binary dependencies [DOCUMENTED: `docs/decisions/0002-deterministic-layout.md:L3-L17`].
+**Answer:** Graphviz requires external system binaries (`apt-get install graphviz` or `brew install graphviz`) which fail silently in constrained container environments, serverless functions, and minimal developer machines. Furthermore, Graphviz does not synthesize Excalidraw's unique reciprocal container bindings or hand-drawn rough styling. Sketchwright implements a pure Python layout engine with zero binary dependencies [DOCUMENTED: `docs/architecture/decisions/0002-deterministic-layout.md:L3-L17`].
 
 #### Q2: How is stdio isolation guaranteed during MCP server execution?
 **Answer:** In [`src/sketchwright/logging_config.py`](file:///f:/GITHUB/sketchwright-mcp/src/sketchwright/logging_config.py#L26-L31), `setup_logging` attaches a stream handler strictly to `sys.stderr` when `is_mcp=True`. The standard output stream (`sys.stdout`) is reserved exclusively for JSON-RPC frame serialization by the MCP SDK.
@@ -2401,17 +2401,17 @@ Exhaustive accounting of all 87 tracked repository files:
 | `CHANGELOG.md` | T4 | FULL | §FILES, §GIT | High | Chronological release notes |
 | `CONTRIBUTING.md` | T4 | FULL | §FILES, §ONBOARD | High | Contributor setup handbook |
 | `docs/architecture.md` | T4 | FULL | §FILES, §ARCH | High | Architectural specification |
-| `docs/configuration.md` | T4 | FULL | §FILES, §CFG | High | Configuration guide |
-| `docs/decisions/0001-mcp-v2-sdk.md` | T4 | FULL | §FILES, §ARCH | High | ADR 0001: MCP SDK adoption |
-| `docs/decisions/0002-deterministic-layout.md` | T4 | FULL | §FILES, §ARCH | High | ADR 0002: Deterministic layout |
-| `docs/decisions/0003-pypi-naming-and-updates.md` | T4 | FULL | §FILES, §ARCH | High | ADR 0003: Packaging & updates |
+| `docs/guides/configuration.md` | T4 | FULL | §FILES, §CFG | High | Configuration guide |
+| `docs/architecture/decisions/0001-mcp-v2-sdk.md` | T4 | FULL | §FILES, §ARCH | High | ADR 0001: MCP SDK adoption |
+| `docs/architecture/decisions/0002-deterministic-layout.md` | T4 | FULL | §FILES, §ARCH | High | ADR 0002: Deterministic layout |
+| `docs/architecture/decisions/0003-pypi-naming-and-updates.md` | T4 | FULL | §FILES, §ARCH | High | ADR 0003: Packaging & updates |
 | `docs/diagram-format.md` | T4 | FULL | §FILES, §DATA | High | Diagram schema specification |
 | `docs/installation.md` | T4 | FULL | §FILES, §BUILD | High | Installation handbook |
 | `docs/layout-engine.md` | T4 | FULL | §FILES, §ARCH | High | Layout algorithm specification |
 | `docs/mcp-integration.md` | T4 | FULL | §FILES, §AI | High | MCP client configuration guide |
 | `docs/security.md` | T4 | FULL | §FILES, §SEC | High | Security posture reference |
-| `docs/testing.md` | T4 | FULL | §FILES, §TEST | High | Test suite architecture guide |
-| `docs/troubleshooting.md` | T4 | FULL | §FILES, §OPS | High | Diagnostics handbook |
+| `docs/development/testing.md` | T4 | FULL | §FILES, §TEST | High | Test suite architecture guide |
+| `docs/guides/troubleshooting.md` | T4 | FULL | §FILES, §OPS | High | Diagnostics handbook |
 | `examples/architecture.json` | T3 | FULL | §FILES, §DATA | High | Reference web architecture JSON |
 | `examples/flowchart.json` | T3 | FULL | §FILES, §DATA | High | Reference flowchart JSON |
 | `examples/hello_world.py` | T1 | FULL | §FILES, §EXTEND | High | Python API example script |
@@ -2630,7 +2630,7 @@ Evaluation of 25 realistic developer questions answered strictly from this overv
 | 17 | Extending | What Pydantic configuration option rejects unknown fields? | `model_config = ConfigDict(extra="forbid")` | [§DATA](#data), [§QUALITY](#quality) | PASS |
 | 18 | Debugging | What exit code does the CLI return for validation or syntax errors? | Exit code `2` | [§TLDR](#tldr), [§CONV](#conv) | PASS |
 | 19 | Debugging | Why does the MCP server log strictly to stderr? | To prevent application log messages from corrupting stdio JSON-RPC framing | [§MENTAL](#mental), [§OPS](#ops) | PASS |
-| 20 | Debugging | Where are common troubleshooting steps documented? | `docs/troubleshooting.md` | [§FILES](#files) | PASS |
+| 20 | Debugging | Where are common troubleshooting steps documented? | `docs/guides/troubleshooting.md` | [§FILES](#files) | PASS |
 | 21 | Security | What is the maximum allowed input payload size? | 1 MB (`1,048,576` bytes) | [§TLDR](#tldr), [§SEC](#sec) | PASS |
 | 22 | Security | How is directory path traversal prevented on file exports? | `validate_safe_output_path()` verifies target path is within `SKETCHWRIGHT_ALLOWED_DIR` | [§SEC](#sec), [§THREAT](#threat) | PASS |
 | 23 | Security | How does the exporter prevent partial or corrupted file writes? | Writes to a temporary `.tmp` file first, then performs atomic `Path.replace()` | [§SEC](#sec), [§THREAT](#threat) | PASS |

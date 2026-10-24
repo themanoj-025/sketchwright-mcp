@@ -64,16 +64,16 @@ graph TD
 
 | Document | Relationship & Cross-Reference |
 |---|---|
-| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/PRD.md) | Uses domain terms to define product requirements (`REQ-###`). |
-| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/TechSpec.md) | Technical implementation of concepts defined in this glossary. |
-| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/AppFlow.md) | Uses glossary terms to describe state transitions and terminal states. |
-| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/Design.md) | Details visual styling tokens for Excalidraw elements. |
-| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) | Implements data entities corresponding to `DiagramSpec` and `ExcalidrawElement`. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/ImplementationPlan.md) | Structures development tasks around the core algorithm vocabulary. |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/Tracker.md) | Tracks progress using the terminology defined here. |
-| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/Rules.md) | References invariants such as stdio framing and reciprocal bindings. |
-| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/API.md) | Uses glossary terms to document tool inputs, outputs, and JSON-RPC framing. |
-| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/SecurityAndCompliance.md) | References security invariants including zero-network and path sanitization. |
-| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/Testing.md) | Defines test fixtures and determinism test cases. |
-| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/Deployment.md) | Explains packaging terminology including sdist, wheel, and PyPI. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/RiskRegister.md) | Documents risks associated with algorithmic edge cases. |
+| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | Uses domain terms to define product requirements (`REQ-###`). |
+| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Technical implementation of concepts defined in this glossary. |
+| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Uses glossary terms to describe state transitions and terminal states. |
+| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Details visual styling tokens for Excalidraw elements. |
+| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Implements data entities corresponding to `DiagramSpec` and `ExcalidrawElement`. |
+| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Structures development tasks around the core algorithm vocabulary. |
+| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Tracks progress using the terminology defined here. |
+| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | References invariants such as stdio framing and reciprocal bindings. |
+| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Uses glossary terms to document tool inputs, outputs, and JSON-RPC framing. |
+| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | References security invariants including zero-network and path sanitization. |
+| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Defines test fixtures and determinism test cases. |
+| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Explains packaging terminology including sdist, wheel, and PyPI. |
+| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Documents risks associated with algorithmic edge cases. |

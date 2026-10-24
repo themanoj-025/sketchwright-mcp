@@ -122,16 +122,16 @@ pie title Task Distribution by Operational Status
 
 | Document | Relationship & Cross-Reference |
 |---|---|
-| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/PRD.md) | Maps tracked tasks back to approved product requirements (`REQ-###`). |
-| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/TechSpec.md) | Documents the technical architecture governing all completed tasks. |
-| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/AppFlow.md) | Details user states (`SCR-###`) associated with CLI and MCP tasks. |
-| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/Design.md) | Enforces design system standards verified during visual output tasks. |
-| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) | References data models implemented under Phase 0 tasks. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/ImplementationPlan.md) | Defines the full task breakdown and dependency chain mirrored in this tracker. |
-| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/Rules.md) | Sets coding standards and update protocols that govern this tracker. |
-| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/API.md) | Details MCP endpoint specifications delivered in Phase 3. |
-| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/SecurityAndCompliance.md) | Outlines security controls tested in `TASK-4.2`. |
-| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/Testing.md) | Outlines QA strategies executed across Phase 4 testing tasks. |
-| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/Deployment.md) | Explains rollout pipelines tracked in `TASK-4.3` and `TASK-4.4`. |
-| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/Glossary.md) | Explains technical terms referenced in task descriptions. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/RiskRegister.md) | Tracks project risks aligned with recorded blockers and tasks. |
+| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | Maps tracked tasks back to approved product requirements (`REQ-###`). |
+| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Documents the technical architecture governing all completed tasks. |
+| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Details user states (`SCR-###`) associated with CLI and MCP tasks. |
+| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Enforces design system standards verified during visual output tasks. |
+| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | References data models implemented under Phase 0 tasks. |
+| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Defines the full task breakdown and dependency chain mirrored in this tracker. |
+| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Sets coding standards and update protocols that govern this tracker. |
+| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Details MCP endpoint specifications delivered in Phase 3. |
+| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Outlines security controls tested in `TASK-4.2`. |
+| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Outlines QA strategies executed across Phase 4 testing tasks. |
+| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Explains rollout pipelines tracked in `TASK-4.3` and `TASK-4.4`. |
+| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Explains technical terms referenced in task descriptions. |
+| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Tracks project risks aligned with recorded blockers and tasks. |

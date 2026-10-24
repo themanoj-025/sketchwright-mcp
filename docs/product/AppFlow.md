@@ -150,9 +150,9 @@ stateDiagram-v2
 ## 8. Related Documents
 | Document | Relationship & Cross-Reference |
 |---|---|
-| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/PRD.md) | High-level user stories (`US-001` through `US-005`) and requirement definitions. |
-| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/TechSpec.md) | Component architecture, sequence diagrams, and technology stack. |
-| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/Design.md) | Visual styling, color tokens, and element geometry specs. |
-| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) | Entity models and structural validation schemas. |
-| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/API.md) | MCP tools and CLI command interface specifications. |
-| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/Testing.md) | Test cases verifying state transitions and error recovery. |
+| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | High-level user stories (`US-001` through `US-005`) and requirement definitions. |
+| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Component architecture, sequence diagrams, and technology stack. |
+| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Visual styling, color tokens, and element geometry specs. |
+| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Entity models and structural validation schemas. |
+| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | MCP tools and CLI command interface specifications. |
+| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Test cases verifying state transitions and error recovery. |

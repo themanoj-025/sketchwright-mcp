@@ -55,7 +55,7 @@ gantt
 
 ### Phase 0: Data Contracts & Foundations
 - **Goal**: Implement typed data structures and input parsers for structured JSON and shorthand text DSLs.
-- **Entry Criteria**: Finalized [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/PRD.md) requirements and [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) entity definitions.
+- **Entry Criteria**: Finalized [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) requirements and [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) entity definitions.
 - **Exit Criteria**: 100% test pass rate on input parsing fixtures; zero type errors under `mypy --strict`.
 
 | Task ID | Description | Depends On | Owner Role | Est. Effort | Traces To |
@@ -218,7 +218,7 @@ New contributors and AI coding agents must execute the following setup sequence:
 
 ### 6.1 Versioning Policy
 Sketchwright follows strict Semantic Versioning (`MAJOR.MINOR.PATCH`):
-- **MAJOR**: Breaking changes to input schema ([Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md)), CLI argument flags, or MCP tool signatures.
+- **MAJOR**: Breaking changes to input schema ([Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md)), CLI argument flags, or MCP tool signatures.
 - **MINOR**: New layout algorithms, additional shape primitives, enhanced styling tokens, or non-breaking tools.
 - **PATCH**: Bug fixes in geometric routing, binding adjustments, or performance optimizations.
 
@@ -246,16 +246,16 @@ A task in `ImplementationPlan.md` cannot be marked as **Done** unless it satisfi
 
 | Document | Relationship & Cross-Reference |
 |---|---|
-| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/PRD.md) | Defines the functional requirements (`REQ-###`) and user stories (`US-###`) mapped to build phases. |
-| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/TechSpec.md) | Details the technical architecture, data pipelines, and internal module contracts. |
-| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/AppFlow.md) | Specifies CLI screen transitions and MCP protocol state machines implemented across phases. |
-| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/Design.md) | Dictates the visual styling tokens and Excalidraw element properties applied in Phase 2. |
-| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) | Documents the entity models (`TBL-###`) implemented in Phase 0. |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/Tracker.md) | Tracks the live execution status and milestone completion of every `TASK-#.#`. |
-| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/Rules.md) | Enforces the coding standards and AI-agent operating rules during task execution. |
-| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/API.md) | Details the MCP tool signatures and CLI options delivered in Phase 3. |
-| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/SecurityAndCompliance.md) | Details threat models and sanitization invariants verified in Phase 4. |
-| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/Testing.md) | Defines the comprehensive test strategy and automated CI test execution gates. |
-| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/Deployment.md) | Details package deployment, release automation, and environment setup. |
-| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/Glossary.md) | Defines technical terms like Sugiyama, barycenter, and reciprocal binding. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/RiskRegister.md) | Identifies operational and algorithmic risks tracked throughout project execution. |
+| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | Defines the functional requirements (`REQ-###`) and user stories (`US-###`) mapped to build phases. |
+| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Details the technical architecture, data pipelines, and internal module contracts. |
+| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Specifies CLI screen transitions and MCP protocol state machines implemented across phases. |
+| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Dictates the visual styling tokens and Excalidraw element properties applied in Phase 2. |
+| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Documents the entity models (`TBL-###`) implemented in Phase 0. |
+| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Tracks the live execution status and milestone completion of every `TASK-#.#`. |
+| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Enforces the coding standards and AI-agent operating rules during task execution. |
+| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Details the MCP tool signatures and CLI options delivered in Phase 3. |
+| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Details threat models and sanitization invariants verified in Phase 4. |
+| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Defines the comprehensive test strategy and automated CI test execution gates. |
+| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Details package deployment, release automation, and environment setup. |
+| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Defines technical terms like Sugiyama, barycenter, and reciprocal binding. |
+| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Identifies operational and algorithmic risks tracked throughout project execution. |

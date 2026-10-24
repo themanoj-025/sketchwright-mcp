@@ -101,16 +101,16 @@ If a security vulnerability or unexpected privilege escalation vector is discove
 
 | Document | Relationship & Cross-Reference |
 |---|---|
-| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/PRD.md) | Defines the zero-network and security invariants (`MET-005`). |
-| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/TechSpec.md) | Details the technical implementation of input sanitizers and memory guards. |
-| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/AppFlow.md) | Details error handling and diagnostic routing (`SCR-007`). |
-| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/Design.md) | Governs secure handling of styling tokens without script injection. |
-| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) | Defines field-level constraints and validation limits on all models. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/ImplementationPlan.md) | Tracks execution of security fuzzing tasks (`TASK-4.2`). |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/Tracker.md) | Tracks the active status of security verification tasks. |
-| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/Rules.md) | Enforces the security baseline rules and prohibited patterns. |
-| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/API.md) | Documents API error codes related to security boundaries. |
-| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/Testing.md) | Specifies fuzz testing and path traversal test cases. |
-| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/Deployment.md) | Outlines supply chain security and GitHub Actions release verification. |
-| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/Glossary.md) | Defines security terms like STRIDE, CWE-22, and ReDoS. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/RiskRegister.md) | Tracks security threats and architectural mitigations. |
+| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | Defines the zero-network and security invariants (`MET-005`). |
+| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Details the technical implementation of input sanitizers and memory guards. |
+| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Details error handling and diagnostic routing (`SCR-007`). |
+| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Governs secure handling of styling tokens without script injection. |
+| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Defines field-level constraints and validation limits on all models. |
+| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Tracks execution of security fuzzing tasks (`TASK-4.2`). |
+| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Tracks the active status of security verification tasks. |
+| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Enforces the security baseline rules and prohibited patterns. |
+| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Documents API error codes related to security boundaries. |
+| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Specifies fuzz testing and path traversal test cases. |
+| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Outlines supply chain security and GitHub Actions release verification. |
+| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Defines security terms like STRIDE, CWE-22, and ReDoS. |
+| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Tracks security threats and architectural mitigations. |

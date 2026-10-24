@@ -59,16 +59,16 @@ quadrantChart
 
 | Document | Relationship & Cross-Reference |
 |---|---|
-| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/PRD.md) | Maps top project risks to product requirements and goals. |
-| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/TechSpec.md) | Architectural defenses preventing risk materialization. |
-| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/AppFlow.md) | Details error states and diagnostics associated with risk events. |
-| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/Design.md) | Mitigates font overflow risks through padding and typography tokens. |
-| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/Schema.md) | Enforces field constraints defending against malformed input payloads. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/ImplementationPlan.md) | Schedules risk mitigation tasks (`TASK-4.1`, `TASK-4.2`). |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/Tracker.md) | Records blockers and issues resulting from monitored risks. |
-| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/Rules.md) | Codifies architectural rules that eliminate prohibited anti-patterns. |
-| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/API.md) | Defines error response codes corresponding to risk triggers. |
-| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/SecurityAndCompliance.md) | Details threat models corresponding to security risks. |
-| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/Testing.md) | Outlines automated regression tests that continuously test risk vectors. |
-| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/Deployment.md) | Defines emergency rollback procedures for release-related risks. |
-| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/Glossary.md) | Defines terminology referenced in risk descriptions. |
+| [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | Maps top project risks to product requirements and goals. |
+| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Architectural defenses preventing risk materialization. |
+| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Details error states and diagnostics associated with risk events. |
+| [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Mitigates font overflow risks through padding and typography tokens. |
+| [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Enforces field constraints defending against malformed input payloads. |
+| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Schedules risk mitigation tasks (`TASK-4.1`, `TASK-4.2`). |
+| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Records blockers and issues resulting from monitored risks. |
+| [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Codifies architectural rules that eliminate prohibited anti-patterns. |
+| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Defines error response codes corresponding to risk triggers. |
+| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Details threat models corresponding to security risks. |
+| [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Outlines automated regression tests that continuously test risk vectors. |
+| [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Defines emergency rollback procedures for release-related risks. |
+| [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Defines terminology referenced in risk descriptions. |
