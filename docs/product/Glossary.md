@@ -9,7 +9,7 @@
 
 ## 1. Domain Vocabulary & Definition Index
 
-To prevent semantic drift, architectural ambiguity, and inconsistent terminology across human developers and AI coding agents, all terms used across the Sketchwright project are formally defined below.
+To prevent semantic drift, architectural ambiguity, and inconsistent terminology across contributors and client integrations, all terms used across the Sketchwright project are formally defined below.
 
 | Term | Context / Scope | Canonical Definition | Forbidden Synonyms / Anti-Patterns |
 |---|---|---|---|
@@ -69,11 +69,8 @@ graph TD
 | [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Uses glossary terms to describe state transitions and terminal states. |
 | [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Details visual styling tokens for Excalidraw elements. |
 | [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Implements data entities corresponding to `DiagramSpec` and `ExcalidrawElement`. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Structures development tasks around the core algorithm vocabulary. |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Tracks progress using the terminology defined here. |
 | [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | References invariants such as stdio framing and reciprocal bindings. |
 | [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Uses glossary terms to document tool inputs, outputs, and JSON-RPC framing. |
 | [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | References security invariants including zero-network and path sanitization. |
 | [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Defines test fixtures and determinism test cases. |
 | [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Explains packaging terminology including sdist, wheel, and PyPI. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Documents risks associated with algorithmic edge cases. |

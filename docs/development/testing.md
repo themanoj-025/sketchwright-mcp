@@ -127,11 +127,8 @@ flowchart LR
 | [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Details screen transitions and CLI error codes verified in test cases. |
 | [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Enforces visual styling assertions tested in SVG and Excalidraw suites. |
 | [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Supplies Pydantic validation schemas tested in parser verification. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Tracks execution of test framework tasks (`TASK-0.4`, `TASK-4.1`). |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Reports the live test pass rate and blocker resolutions. |
 | [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Enforces test coverage minimums (`RULE-007`) and testing operating rules. |
 | [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Defines contract interfaces validated in integration tests. |
 | [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Details security fuzzing and path traversal defenses validated by tests. |
 | [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Specifies CI pipeline gates and release automation. |
 | [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Defines testing terminology including golden fixtures and determinism. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Documents quality risks and test mitigations. |

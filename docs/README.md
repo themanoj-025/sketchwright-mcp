@@ -29,13 +29,9 @@ docs/
 │   ├── Deployment.md              # Build, release, PyPI distribution & host configs
 │   ├── troubleshooting.md         # Diagnostic procedures, error codes & resolutions
 │   └── SecurityAndCompliance.md   # Threat model, sandboxing & payload limits
-└── development/                   # Engineering standards, testing & delivery tracking
-    ├── Rules.md                   # Coding standards, Git hygiene & agent operating rules
-    ├── testing.md                 # Test strategy, critical test cases & verification gates
-    ├── ImplementationPlan.md      # Phased engineering roadmap & milestone delivery
-    ├── Tracker.md                 # Real-time task progress dashboard & blocker log
-    ├── RiskRegister.md            # Risk matrix, mitigations & active risk triggers
-    └── migration/                 # Historical restructuring records & verification reports
+└── development/                   # Engineering standards, testing & quality requirements
+    ├── Rules.md                   # Engineering standards, coding guidelines & invariants
+    └── testing.md                 # Test strategy, critical test cases & verification gates
 ```
 
 ---
@@ -47,9 +43,9 @@ Focused on what we are building, why it exists, and the user journeys it enables
 
 | Document | Primary Audience | Key Contents & Verification Objectives |
 |---|---|---|
-| [**PRD.md**](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | Product Managers, Architects | Core problem statement, user personas, functional requirements (`REQ-001`–`REQ-007`), performance metrics, and acceptance criteria. |
+| [**PRD.md**](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | Product Managers, Architects | Core problem statement, personas, functional requirements (`REQ-001`–`REQ-007`), performance metrics, and acceptance criteria. |
 | [**AppFlow.md**](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Frontend/Backend Eng, Designers | CLI option state trees, stdio MCP lifecycle state machines, error transition handling, and client integration flows. |
-| [**Glossary.md**](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | All Contributors & AI Agents | Canonical definitions for graph layout terms (Sugiyama, barycentric heuristic, cycle breaking) and Excalidraw primitives. |
+| [**Glossary.md**](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | All Contributors & Developers | Canonical definitions for graph layout terms (Sugiyama, barycentric heuristic, cycle breaking) and Excalidraw primitives. |
 
 ---
 
@@ -59,7 +55,7 @@ Deep-dive technical blueprints and formal data contracts:
 | Document | Primary Audience | Key Contents & Verification Objectives |
 |---|---|---|
 | [**TechSpec.md**](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Senior Engineers, Reviewers | 4-phase Sugiyama layout pipeline, collision detection geometry, C4 system architecture diagrams, and resource limits. |
-| [**Design.md**](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | UI/UX Engineers, Agents | Excalidraw visual style tokens, stroke and fill color palettes, proportional typography metrics, and connector arrow routing. |
+| [**Design.md**](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | UI/UX Engineers, Developers | Excalidraw visual style tokens, stroke and fill color palettes, proportional typography metrics, and connector arrow routing. |
 | [**Schema.md**](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Integration Engineers, Tool Users | Canonical Pydantic schemas, JSON schema specifications, Text DSL shorthand grammar, and Excalidraw scene JSON formats. |
 | [**API.md**](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Client Integrators, Developers | FastMCP tool signatures (`sketchwright_generate`, `sketchwright_validate`, etc.), CLI flags, and Python facade APIs. |
 | [**decisions/**](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/decisions) | System Architects | Historical Architecture Decision Records (ADRs) capturing key architectural pivots and technology choices. |
@@ -72,29 +68,25 @@ Runbooks for installation, configuration, security hardening, and deployment:
 | Document | Primary Audience | Key Contents & Verification Objectives |
 |---|---|---|
 | [**configuration.md**](file:///f:/GITHUB/sketchwright-mcp/docs/guides/configuration.md) | DevOps, System Operators | Environment variables (`SKETCHWRIGHT_DETERMINISTIC`, `SKETCHWRIGHT_LOG_LEVEL`), timeouts, and default dimensions. |
-| [**Deployment.md**](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Release Engineers | Packaging commands with `uv build`, PyPI release workflows, client config snippets for Claude Desktop and Cursor. |
+| [**Deployment.md**](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Release Engineers | Packaging commands with `uv build`, PyPI release workflows, client config snippets for MCP hosts. |
 | [**troubleshooting.md**](file:///f:/GITHUB/sketchwright-mcp/docs/guides/troubleshooting.md) | Support, Developers | Step-by-step diagnostic workflows, common error codes (`400`, `413`, `500`), and logging inspection steps. |
 | [**SecurityAndCompliance.md**](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Security Auditors | STRIDE threat analysis, filesystem sandbox confinements, payload limits (1 MB ceiling), and CVE mitigation strategies. |
 
 ---
 
 ### 4. Development & Engineering (`docs/development/`)
-Engineering operational standards, testing pyramids, and project tracking:
+Engineering operational standards, testing pyramids, and quality gates:
 
 | Document | Primary Audience | Key Contents & Verification Objectives |
 |---|---|---|
-| [**Rules.md**](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Contributors, AI Agents | Repository coding conventions, Git branching & commit standards (`RULE-001`–`RULE-015`), and style requirements. |
+| [**Rules.md**](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Contributors & Maintainers | Repository coding conventions, Git branching & commit standards (`RULE-001`–`RULE-010`), and architectural invariants. |
 | [**testing.md**](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | QA, Test Engineers | Test pyramid breakdown (Unit, Integration, Contract, E2E), critical test matrix (`TC-001`–`TC-010`), and coverage benchmarks. |
-| [**ImplementationPlan.md**](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Engineering Leads | Phased work breakdown structure (`Phase 0` through `Phase 5`), task dependencies, and milestone delivery dates. |
-| [**Tracker.md**](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Project Managers | Living task burndown tracker, progress percentages, active blockers, and resolution histories. |
-| [**RiskRegister.md**](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Risk Managers | Failure mode matrix (`RSK-001`–`RSK-007`), risk severity/probability scoring, and contingency plans. |
-| [**migration/**](file:///f:/GITHUB/sketchwright-mcp/docs/development/migration) | Compliance Archivists | Historical file move ledgers, change verification reports, and rollback runbooks. |
 
 ---
 
 ## ⚡ Recommended Reading Paths
 
-- **If you are integrating Sketchwright with an MCP Client (Claude, Cursor):**
+- **If you are integrating Sketchwright with an MCP Client:**
   1. Start with [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md#client-integration) for configuration snippets.
   2. Consult [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) to inspect available tool parameters and options.
   3. Reference [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) for custom JSON and text DSL examples.

@@ -209,11 +209,8 @@ All CLI commands exit with standard POSIX codes:
 | [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Maps CLI endpoints to screens and state transitions (`SCR-001` through `SCR-007`). |
 | [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Defines visual styles rendered by the output generation APIs. |
 | [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Defines the Pydantic data schemas consumed by API request payloads. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Outlines delivery tasks for the FastMCP server (`TASK-3.1`) and CLI (`TASK-3.3`). |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Tracks the deployment and testing status of each API endpoint. |
 | [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Governs stdio protocol isolation and prohibited logging patterns. |
 | [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Details authentication, input sanitization, and size limits applied to APIs. |
 | [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Outlines API contract test cases and automated regression suites. |
 | [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Details packaging and distribution of the CLI and MCP entry points. |
 | [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Defines terminology such as FastMCP, JSON-RPC, and stdio framing. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Documents API-related risks including stdio corruption and input payload denial of service. |

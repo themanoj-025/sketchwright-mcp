@@ -13,7 +13,7 @@ Sketchwright is designed as a modular, decoupled Python system adhering to stric
 ```mermaid
 graph TD
     subgraph "External Clients"
-        AgentClient[AI Coding Agent / Claude Desktop / Cursor]
+        MCPHost[MCP Host / Integration Client]
         TerminalUser[Terminal Developer / Shell Script / CI]
     end
 
@@ -44,7 +44,7 @@ graph TD
         Export["Atomic Exporter (.excalidraw & .svg)<br/><code>src/sketchwright/excalidraw/export.py</code>"]
     end
 
-    AgentClient -->|JSON-RPC 2.0 stdio| MCPServer
+    MCPHost -->|JSON-RPC 2.0 stdio| MCPServer
     TerminalUser -->|CLI Args & Files| CLI
     TerminalUser -->|Python Library Import| PublicAPI
 
@@ -135,7 +135,7 @@ The native layout engine produces clean, legible, non-overlapping diagrams witho
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Agent as AI Coding Agent (Host)
+    actor Client as MCP Host / Client Application
     participant Server as MCP Server (server.py)
     participant Engine as Generator Pipeline (generator.py)
     participant Parser as Structured Parser (structured.py)
@@ -143,7 +143,7 @@ sequenceDiagram
     participant Serializer as Scene Serializer (serializer.py)
     participant Export as File Exporter (export.py)
 
-    Agent->>Server: tools/call (sketchwright_generate, spec, output_path)
+    Client->>Server: tools/call (sketchwright_generate, spec, output_path)
     Server->>Engine: generate_diagram(spec, output_path, format)
     Engine->>Parser: parse_json(spec_data, max_bytes=1MB)
     Parser-->>Engine: DiagramModel (Validated)
@@ -154,7 +154,7 @@ sequenceDiagram
     Engine->>Export: write_atomic(output_path, ExcalidrawScene)
     Export-->>Engine: FilePathVerified
     Engine-->>Server: GenerationResult(file_path, node_count, edge_count)
-    Server-->>Agent: JSON-RPC Result (tool content)
+    Server-->>Client: JSON-RPC Result (tool content)
 ```
 
 ### 4.2 Incremental Diagram Update Flow
@@ -236,12 +236,9 @@ sequenceDiagram
 | [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Maps CLI and MCP states to engine pipeline execution steps. |
 | [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Dictates the visual styling tokens and Excalidraw element properties. |
 | [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Concrete Pydantic model schemas and Excalidraw element JSON data structures. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Phased task sequencing and architectural dependency graph. |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Living execution status of layout and architecture tasks. |
 | [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Operating rules and coding standards governing architecture implementation. |
 | [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | FastMCP tool signatures, CLI argument specifications, and Python interfaces. |
 | [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Detailed sandbox mechanics and threat mitigations. |
 | [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Test suite breakdown, determinism assertions, and coverage gates. |
 | [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | CI/CD build configuration and package release procedures. |
 | [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Technical definitions for layout and architecture vocabulary. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Architectural and operational risks with mitigations. |

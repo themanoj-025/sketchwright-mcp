@@ -352,12 +352,9 @@ orders --> client: 201 Created
 | [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Technical architecture and data processing pipelines. |
 | [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | State inventory and user flow maps. |
 | [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Visual styling tokens, color definitions, and shape dimensions. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Phased task sequencing and milestones. |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Living execution status of schema and model tasks. |
 | [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Code style and schema synchronization invariants. |
 | [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Serialization formats for MCP tools and CLI command options. |
 | [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | System limits and memory protection invariants. |
 | [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Unit and integration testing strategies. |
 | [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Release procedures and client configurations. |
 | [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Definitions for domain terms and concepts. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Data and schema integrity risk register. |

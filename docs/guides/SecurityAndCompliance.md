@@ -8,7 +8,7 @@
 # 📄 Security Architecture & Defensive Boundaries (SecurityAndCompliance) — Sketchwright
 
 ## 1. Executive Security Posture
-Sketchwright operates exclusively as a **local, offline computational utility** designed for developer environments and AI coding agents. Because it executes within the invoking user's local security context over stdio or local CLI invocations, its security posture focuses on:
+Sketchwright operates exclusively as a **local, offline computational utility** designed for developer environments and automated diagramming workflows. Because it executes within the invoking user's local security context over stdio or local CLI invocations, its security posture focuses on:
 1. **Preventing Local File Overwrites & Path Traversal (CWE-22)**
 2. **Defending Against Algorithmic & Memory Exhaustion (Denial of Service)**
 3. **Eliminating Unintended Network Exfiltration (Zero-Network Invariant)**
@@ -106,11 +106,8 @@ If a security vulnerability or unexpected privilege escalation vector is discove
 | [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Details error handling and diagnostic routing (`SCR-007`). |
 | [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Governs secure handling of styling tokens without script injection. |
 | [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Defines field-level constraints and validation limits on all models. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Tracks execution of security fuzzing tasks (`TASK-4.2`). |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Tracks the active status of security verification tasks. |
 | [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Enforces the security baseline rules and prohibited patterns. |
 | [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Documents API error codes related to security boundaries. |
 | [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Specifies fuzz testing and path traversal test cases. |
 | [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Outlines supply chain security and GitHub Actions release verification. |
 | [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Defines security terms like STRIDE, CWE-22, and ReDoS. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Tracks security threats and architectural mitigations. |

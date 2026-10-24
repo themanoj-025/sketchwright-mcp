@@ -5,11 +5,11 @@
 | Owner | Principal Architect & Lead Maintainer |
 | Status | Approved (Enforced) |
 
-# 📄 Repository Rules & AI Agent Operating Constitution (Rules) — Sketchwright
+# 📄 Engineering Guidelines & Code Standards — Sketchwright
 
 ## 1. Guiding Principles
 
-Every human contributor and autonomous AI coding agent working in this repository must uphold these non-negotiable principles:
+Every contributor working in this repository must uphold these non-negotiable principles:
 
 1. **`RULE-001` Mathematical Determinism First**: Output coordinates, layout topology, and element IDs must be 100% reproducible. Given identical graph input, output JSON must match bit-for-bit.
 2. **`RULE-002` Zero Network Access by Default**: Sketchwright is a local, offline computation engine. It must never initiate network connections, fetch external schemas at runtime, or make background telemetry calls.
@@ -25,7 +25,7 @@ Every human contributor and autonomous AI coding agent working in this repositor
 ### 2.1 Language & Tooling Standards
 - **Python Version**: >= 3.12 exclusively.
 - **Package Manager**: `uv` (Fast, reproducible dependency locking via `uv.lock`).
-- **Linter & Formatter**: `ruff` with 100-character line lengths.
+- **Linter & Formatter**: `ruff` with 120-character line lengths.
 - **Type Checker**: `mypy --strict` with zero permitted untyped definitions in `src/`.
 - **Testing Framework**: `pytest` with `pytest-asyncio` and `pytest-cov`.
 
@@ -37,47 +37,24 @@ sketchwright-mcp/
 │   └── workflows/
 │       ├── ci.yml                # Lint, format, type-check, multi-OS test matrix
 │       └── release.yml           # PyPI release automation
-├── docs/                         # Single source of truth documentation suite, ADRs & guides
-│   ├── decisions/                # Architecture Decision Records (ADRs)
-│   ├── migration/                # Restructuring audit records and verification runbooks
-│   ├── PRD.md                    # Product Requirements Document
-│   ├── TechSpec.md               # Technical Specification & Architecture
-│   ├── AppFlow.md                # Application Flow & UI State Inventory
-│   ├── Design.md                 # Design System & Excalidraw Visual Tokens
-│   ├── Schema.md                 # Data Models & Canonical Diagram Schemas
-│   ├── ImplementationPlan.md     # Phased Implementation & Build Sequencing
-│   ├── Tracker.md                # Living Project Status & Task Tracker
-│   ├── Rules.md                  # Repository Constitution & AI Agent Rules
-│   ├── API.md                    # FastMCP Tool Signatures & CLI Interfaces
-│   ├── SecurityAndCompliance.md  # Threat Model & Security Sandboxing
-│   ├── Testing.md                # QA Strategy, Test Cases & Fixtures
-│   ├── Deployment.md             # Release Automation & Client Configs
-│   ├── Glossary.md               # Technical Terms & Domain Vocabulary
-│   ├── RiskRegister.md           # Operational Risk Matrix & Mitigations
-│   ├── configuration.md          # Environment Variables & Settings Reference
-│   └── troubleshooting.md        # Diagnostic Procedures & Troubleshooting FAQ
+├── docs/                         # Documentation suite, specifications & runbooks
+│   ├── README.md                 # Master index & reading paths
+│   ├── product/                  # PRD, user journeys, app flows, and terminology glossary
+│   ├── architecture/             # Technical specs, design tokens, schemas, APIs & ADRs
+│   ├── guides/                   # Deployment, configuration, security, and troubleshooting
+│   └── development/              # Engineering standards and test strategy
 ├── examples/                     # Sample input specs and MCP client configurations
 ├── src/                          # Canonical Python source tree (PEP 517/518)
 │   └── sketchwright/
 │       ├── __init__.py           # Package version and public exports
-│       ├── main.py               # Unified CLI entry point (Typer/Click)
-│       ├── mcp_server.py         # FastMCP stdio server implementation
+│       ├── cli.py                # Unified CLI entry point
+│       ├── logging_config.py     # Stderr-only structured logging
 │       ├── py.typed              # PEP 561 typing marker
 │       ├── engine/               # Layout algorithms & geometry
-│       │   ├── algorithms.py     # Sugiyama, grid, tree layout implementations
-│       │   ├── geometry.py       # Box collisions, point math, and padding
-│       │   └── routing.py        # Stepped orthogonal polyline edge routing
 │       ├── excalidraw/           # Excalidraw schema & serialization
-│       │   ├── models.py         # Excalidraw element data models
-│       │   ├── serializer.py     # Deterministic scene graph serializer
-│       │   ├── svg.py            # Pure vector SVG rendering engine
-│       │   └── validator.py      # Scene integrity & reciprocal binding validator
 │       ├── models/               # Abstract diagram specification models
-│       │   ├── config.py         # Layout and style configuration schemas
-│       │   └── diagram.py        # DiagramSpec, NodeSpec, EdgeSpec, GroupSpec
-│       └── parser/               # Input format processors
-│           ├── structured.py     # Structured JSON / YAML parser
-│           └── text.py           # Shorthand line-based DSL parser
+│       ├── parser/               # Input format processors
+│       └── mcp/                  # FastMCP stdio server and tools
 └── tests/                        # Comprehensive automated test suite
     ├── conftest.py               # Shared pytest fixtures and sample graphs
     ├── contract/                 # MCP protocol interface schema and contract test suite
@@ -129,33 +106,20 @@ flowchart LR
 
 ---
 
-## 5. AI Agent Operating Constitution
-
-When an autonomous AI agent (e.g., Claude, Cursor, Windsurf) operates in this repository, it MUST adhere to the following imperative rules:
-
-1. **`AGT-001` Consult the Living Documents First**: Always review [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) and [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) prior to beginning any code modification.
-2. **`AGT-002` Never Mark Done Without Passing Tests**: Never flip a task status to `🟢 Done` in `Tracker.md` until `uv run pytest` executes with 100% success and zero regressions.
-3. **`AGT-003` Zero Assumption Policy**: Never invent undocumented CLI arguments, schema fields, or protocol behavior. If a user request is ambiguous, stop and ask for clarification or propose a structured choice.
-4. **`AGT-004` Synchronized Documentation**: Any change that modifies a data structure in `src/sketchwright/models/` or an Excalidraw element property in `src/sketchwright/excalidraw/` MUST be accompanied by a same-commit update to [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md).
-5. **`AGT-005` Never Suppress Type Safety**: Never add `# type: ignore` or `# noqa` simply to pass CI. Fix the underlying type signature or refactor the offending expression.
-6. **`AGT-006` Zero Stdio Pollution**: Never insert `print()` statements for debugging into `src/sketchwright/mcp_server.py` or underlying engine modules. Use `logging.getLogger(__name__)` configured to output strictly to `stderr`.
-
----
-
-## 6. Security Baseline Rules
+## 5. Security Baseline Rules
 
 - **Input Size Ceilings**: JSON and DSL inputs parsed via CLI or MCP are capped at **1 MB** (1,048,576 bytes) to defend against memory exhaustion and regex ReDoS attacks.
 - **Graph Complexity Limits**: Layout engine rejects input specifications exceeding **500 nodes** or **1,000 edges** per diagram.
 - **Path Traversal Defense**: All output file writing must sanitize target paths using `os.path.realpath`, verifying that destination directories are writable and within intended scratch/target workspaces.
-- **Dependency Sandboxing**: Run zero unpinned dependencies; lockfiles must be audited via automated security scanning (`dependabot.yml` and `secret-scan.yml`).
+- **Dependency Sandboxing**: Run zero unpinned dependencies; lockfiles must be audited via automated security scanning (`dependabot.yml`).
 
 ---
 
-## 7. Prohibited Anti-Patterns
+## 6. Prohibited Anti-Patterns
 
 | Anti-Pattern ID | Prohibited Pattern | Reason / Consequence |
 |---|---|---|
-| `ANTI-001` | Raw `print()` to `stdout` in core library | Corrupts JSON-RPC 2.0 framing, causing AI host agents to disconnect |
+| `ANTI-001` | Raw `print()` to `stdout` in core library | Corrupts JSON-RPC 2.0 framing, causing MCP host clients to disconnect |
 | `ANTI-002` | Unseeded or non-deterministic random IDs (`uuid.uuid4()`) | Breaks diagram determinism; causes massive unnecessary Git diffs |
 | `ANTI-003` | Importing external HTTP libraries (`requests`, `httpx`) | Violates zero-network architectural invariant (`RULE-002`) |
 | `ANTI-004` | Hardcoded absolute paths in test fixtures | Breaks CI matrix runs on Windows, Linux, and macOS runners |
@@ -163,35 +127,17 @@ When an autonomous AI agent (e.g., Claude, Cursor, Windsurf) operates in this re
 
 ---
 
-## 8. Escalation & Autonomous Authority Matrix
-
-| Action / Decision | Autonomous AI Decision | Requires Human Approval |
-|---|:---:|:---:|
-| Refactoring internal layout algorithms without changing public API | ✅ | |
-| Adding unit and integration tests | ✅ | |
-| Updating `docs/development/Tracker.md` following successful test execution | ✅ | |
-| Adding new internal helper functions or data models | ✅ | |
-| Modifying public CLI commands or flags | | 🛑 Human Approval Required |
-| Introducing a new external PyPI dependency | | 🛑 Human Approval Required |
-| Changing public MCP tool names or parameters | | 🛑 Human Approval Required |
-| Deleting existing public API endpoints or models | | 🛑 Human Approval Required |
-
----
-
-## 9. Related Documents
+## 7. Related Documents
 
 | Document | Relationship & Cross-Reference |
 |---|---|
 | [PRD.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/PRD.md) | Defines system goals (`G-###`) and user stories (`US-###`) enforced by these rules. |
-| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Documents architectural boundaries and module contracts governed by this constitution. |
-| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Specifies UI states and error diagnostics enforced in Section 1. |
+| [TechSpec.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/TechSpec.md) | Documents architectural boundaries and module contracts governed by these standards. |
+| [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Specifies execution states and error diagnostics enforced in Section 1. |
 | [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Enforces visual styling tokens and accessibility standards for generated elements. |
 | [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Provides the data schema that must be synchronized upon any model modification. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Establishes the phased task list that AI agents must consult before starting work. |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Living status tracker updated in compliance with `AGT-002`. |
-| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Defines the contract interfaces protected by escalation rules. |
-| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Expands upon the security baseline rules defined in Section 6. |
+| [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Defines the contract interfaces protected by repository rules. |
+| [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Expands upon the security baseline rules defined in Section 5. |
 | [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Details the test suites and coverage requirements mandated by `RULE-007`. |
 | [Deployment.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/Deployment.md) | Outlines release and CI/CD operations governed by Section 3. |
 | [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Defines terminology referenced throughout these rules. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Documents risks associated with violating repository invariants. |

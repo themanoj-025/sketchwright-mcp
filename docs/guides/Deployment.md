@@ -13,7 +13,7 @@ Because Sketchwright is distributed as an open-source Python package and standal
 ```mermaid
 flowchart TD
     subgraph Development
-        Dev[Local Workstation / AI Agent] -->|uv sync & pytest| Branch[Feature Branch]
+        Dev[Local Workstation / Developer] -->|uv sync & pytest| Branch[Feature Branch]
         Branch -->|git push| GH[GitHub PR]
     end
 
@@ -36,7 +36,7 @@ flowchart TD
     subgraph Consumer Consumption
         PyPI --> UVX[uvx sketchwright-mcp]
         PyPI --> PIP[pip install sketchwright]
-        PyPI --> MCPClient[Claude Desktop / Cursor Agent]
+        PyPI --> MCPClient[MCP Client / Host Application]
     end
 ```
 
@@ -46,10 +46,10 @@ flowchart TD
 
 | Environment | Purpose | Target Audience | Access & Trigger Mechanism |
 |---|---|---|---|
-| **Local Dev** | Feature development, fast unit tests, algorithm validation | Individual Contributors & AI Agents | `uv run pytest` / `uv run sketchwright` |
+| **Local Dev** | Feature development, fast unit tests, algorithm validation | Individual Contributors | `uv run pytest` / `uv run sketchwright` |
 | **Pull Request (CI)** | Multi-OS regression testing, linting, secret detection | Automated GitHub Runners | Push to PR branch |
 | **Main Branch** | Stable trunk; canonical source of truth | Maintainers & Collaborators | Squash and merge via PR |
-| **Production (PyPI)** | Public distribution of versioned wheels and source archives | Global Developers & AI Coding Agents | Push of SemVer tag (e.g., `git tag v1.0.0`) |
+| **Production (PyPI)** | Public distribution of versioned wheels and source archives | Developers & MCP Integrations | Push of SemVer tag (e.g., `git tag v1.0.0`) |
 
 ---
 
@@ -168,11 +168,8 @@ In Cursor Settings > Features > MCP:
 | [AppFlow.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/AppFlow.md) | Outlines entry points activated during deployment. |
 | [Design.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Design.md) | Enforces asset packaging requirements. |
 | [Schema.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/Schema.md) | Provides data models that determine major SemVer release bumps. |
-| [ImplementationPlan.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/ImplementationPlan.md) | Outlines Phase 4 rollout tasks (`TASK-4.3`, `TASK-4.4`). |
-| [Tracker.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Tracker.md) | Tracks the active deployment status and release timeline. |
 | [Rules.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/Rules.md) | Governs git workflow and branching conventions. |
 | [API.md](file:///f:/GITHUB/sketchwright-mcp/docs/architecture/API.md) | Documents the versioning policy for all public endpoints. |
 | [SecurityAndCompliance.md](file:///f:/GITHUB/sketchwright-mcp/docs/guides/SecurityAndCompliance.md) | Details OIDC authentication and supply chain security. |
 | [Testing.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/testing.md) | Specifies CI test gates required prior to release promotion. |
 | [Glossary.md](file:///f:/GITHUB/sketchwright-mcp/docs/product/Glossary.md) | Defines packaging terms such as wheel, sdist, and OIDC. |
-| [RiskRegister.md](file:///f:/GITHUB/sketchwright-mcp/docs/development/RiskRegister.md) | Documents deployment failure risks and mitigations. |

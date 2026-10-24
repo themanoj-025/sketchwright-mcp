@@ -25,7 +25,7 @@ Because Sketchwright operates as a headless CLI, library, and MCP stdio server, 
 
 ```mermaid
 graph LR
-    User[User / AI Agent] --> EntryChoice{Invocation Choice}
+    User[User / MCP Host] --> EntryChoice{Invocation Choice}
 
     EntryChoice -->|--help / -h| SCR001[SCR-001 CLI Help Screen]
     EntryChoice -->|capabilities| SCR002[SCR-002 Capabilities Screen]
@@ -137,7 +137,7 @@ stateDiagram-v2
   - Output of CLI command results (e.g. JSON strings for `capabilities`).
 - **Standard Error (`stderr`)**:
   - All application logging, debugging traces, performance metrics, and human-readable error messages.
-  - Guarantees zero stream contamination for AI hosts parsing `stdout`.
+  - Guarantees zero stream contamination for client hosts parsing `stdout`.
 
 ## 7. Cross-Platform Deltas
 | Feature | Windows (Win32) | Linux / macOS (POSIX) | Handling Strategy |

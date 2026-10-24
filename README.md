@@ -391,13 +391,9 @@ sketchwright-mcp/
 │   │   ├── Deployment.md          # Build, release, PyPI publishing & client configs
 │   │   ├── troubleshooting.md     # Diagnostic procedures & error resolutions
 │   │   └── SecurityAndCompliance.md # STRIDE threat model & security boundaries
-│   └── development/               # Engineering standards, testing & delivery tracking
-│       ├── Rules.md               # Repository constitution & AI agent operating rules
-│       ├── testing.md             # Test strategy, critical test cases & coverage
-│       ├── ImplementationPlan.md  # Phased engineering roadmap & build sequencing
-│       ├── Tracker.md             # Living task progress & milestone burndown
-│       ├── RiskRegister.md        # Risk matrix, mitigations & active triggers
-│       └── migration/             # Historical restructuring records & verification reports
+│   └── development/               # Engineering standards, testing & code quality
+│       ├── Rules.md               # Engineering guidelines & code quality standards
+│       └── testing.md             # Test strategy, critical test cases & coverage
 ├── examples/                      # Runnable samples and test fixtures
 │   ├── architecture.json          # Multi-tier microservice architecture spec
 │   ├── flowchart.json             # Branching process flowchart spec
