@@ -1,68 +1,102 @@
-# Byte-compiled / optimized / DLL files
+# Sketchwright - Git Ignore Configuration
+# Stack: Python 3.12, uv, Pydantic, Model Context Protocol (MCP)
+# Last reviewed: 2026-10-24
+
+# --- Operating system & filesystem metadata ---
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*~
+*.swp
+*.swo
+*.bak
+
+# --- Editors & IDE configurations ---
+.idea/
+*.iml
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+*.sublime-workspace
+.history/
+.netrwhist
+
+# --- Python build, packaging & bytecode ---
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
-
-# Distribution / packaging
 .Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
+/build/
+/develop-eggs/
+/dist/
+/downloads/
+/eggs/
+/.eggs/
+/lib/
+/lib64/
+/parts/
+/sdist/
+/var/
+/wheels/
+/share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
+/MANIFEST
 
-# Virtual environments
-.venv/
-venv/
-ENV/
-env/
+# --- Virtual environments ---
+/.venv/
+/venv/
+/ENV/
+/env/
 
-# Testing and coverage
-.tox/
-.nox/
+# --- Testing, coverage & quality caches ---
+/.tox/
+/.nox/
 .coverage
 .coverage.*
-.cache
 nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
-.hypothesis/
-.pytest_cache/
+/.hypothesis/
+/.pytest_cache/
+/.mypy_cache/
+/.ruff_cache/
+/.cache/
 
-# Type checking & linting
-.mypy_cache/
-.ruff_cache/
-
-# Environments & secrets
+# --- Environment variables & secrets ---
 .env
 .env.*
 !.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials.json
+service-account*.json
+secrets.*
+*.tfstate
+*.tfstate.*
+.terraform/
+id_rsa*
+id_ed25519*
+.pypirc
+.netrc
+kubeconfig
+*.kubeconfig
+.aws/credentials
+.gcloud/
 
-# IDE & OS files
-.DS_Store
-Thumbs.db
-*.swp
-*.swo
-*~
-.idea/
-.vscode/
-
-# Local output / test artifacts
-scratch/
+# --- Local output & scratch artifacts ---
+/scratch/
 *.tmp
