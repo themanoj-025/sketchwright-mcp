@@ -2,48 +2,55 @@
 
 Sketchwright is structured as a decoupled, layered Python library with strict module boundaries. Protocol transport, CLI interactions, domain modeling, graph layout, and scene serialization are completely separated.
 
-```
-                    +---------------------------+
-                    |   MCP Client / LLM Host   |
-                    +-------------+-------------+
-                                  |
-                                  v
-+-------------------+   +--------------------+   +-------------------+
-|   CLI Terminal    |   |  MCP Server Layer  |   | Python Public API |
-| (sketchwright.cli)|   | (mcp.server/tools) |   |   (generate_*)    |
-+---------+---------+   +---------+----------+   +---------+---------+
-          |                       |                        |
-          +-----------------------+------------------------+
-                                  |
-                                  v
-                    +---------------------------+
-                    | Parser & Validation Layer |
-                    | (DiagramSpec / Pydantic)  |
-                    +-------------+-------------+
-                                  |
-                                  v
-                    +---------------------------+
-                    |  Deterministic Layout     |
-                    | (Sugiyama Layered / Grid) |
-                    +-------------+-------------+
-                                  |
-                                  v
-                    +---------------------------+
-                    |  Excalidraw Serialization |
-                    |   (Bindings & Elements)   |
-                    +-------------+-------------+
-                                  |
-                                  v
-                    +---------------------------+
-                    | Scene Validator & Export  |
-                    | (.excalidraw / .svg)      |
-                    +---------------------------+
+## Layered System Architecture
+
+```mermaid
+graph TD
+    Client[AI Agent / Claude Desktop / CLI User]
+    
+    subgraph "Interface Layer"
+        CLI[src/sketchwright/cli.py]
+        MCP[src/sketchwright/mcp/server.py & tools.py]
+    end
+    
+    subgraph "Orchestration & Validation"
+        Engine[src/sketchwright/engine/generator.py & updater.py]
+        Parser[src/sketchwright/parser/structured.py & text.py]
+        Models[src/sketchwright/models/diagram.py & elements.py]
+    end
+    
+    subgraph "Layout Core (Deterministic)"
+        LayoutEngine[src/sketchwright/layout/engine.py]
+        Algorithms[src/sketchwright/layout/algorithms.py]
+        Routing[src/sketchwright/layout/routing.py]
+        Geometry[src/sketchwright/layout/geometry.py]
+    end
+    
+    subgraph "Serialization & Output"
+        Serializer[src/sketchwright/excalidraw/serializer.py]
+        Validator[src/sketchwright/excalidraw/validator.py]
+        Export[src/sketchwright/excalidraw/export.py]
+    end
+
+    Client --> CLI
+    Client --> MCP
+    CLI --> Engine
+    MCP --> Engine
+    Engine --> Parser
+    Parser --> Models
+    Engine --> LayoutEngine
+    LayoutEngine --> Algorithms
+    LayoutEngine --> Routing
+    Algorithms --> Geometry
+    Engine --> Serializer
+    Serializer --> Validator
+    Serializer --> Export
 ```
 
 ## Subsystems
 
 ### 1. Domain Models (`src/sketchwright/models`)
-- Implements `DiagramSpec`, `NodeSpec`, `EdgeSpec`, `LayoutConfig`, and `StyleConfig` using Pydantic.
+- Implements `DiagramSpec`, `NodeSpec`, `EdgeSpec`, `LayoutConfig`, and `StyleConfig` using Pydantic v2.
 - Performs semantic validation: checks node uniqueness, edge endpoint validity, finite coordinates, and resource limits.
 
 ### 2. Parser Layer (`src/sketchwright/parser`)
@@ -70,3 +77,10 @@ Sketchwright is structured as a decoupled, layered Python library with strict mo
 - Built on the official `mcp 2.3.0` Python SDK.
 - Exposes tools, resources, and prompt templates.
 - Enforces strict stdio discipline: all diagnostic logs go to `stderr`, keeping `stdout` reserved for JSON-RPC frames.
+
+## Security & System Limits
+Configured via `sketchwright.config.Limits`:
+- Payload ceiling: 1 MB (`1,048,576` bytes)
+- Node ceiling: 500 nodes
+- Edge ceiling: 1000 edges
+- Filesystem sandbox: `SKETCHWRIGHT_ALLOWED_DIR` path confinement
