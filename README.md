@@ -363,7 +363,7 @@ Sketchwright works out of the box with zero external configuration. Settings can
 }
 ```
 
-See [`docs/diagram-format.md`](./docs/diagram-format.md) for detailed schema specifications.
+See [`docs/Schema.md`](./docs/Schema.md) for detailed schema specifications.
 
 ---
 
@@ -374,16 +374,25 @@ Derived from verified repository source files:
 ```text
 sketchwright-mcp/
 ├── .github/workflows/ci.yml       # Cross-platform GitHub Actions CI (Linux, Windows)
-├── docs/                          # Comprehensive technical documentation
+├── docs/                          # Comprehensive technical documentation & suite
 │   ├── decisions/                 # Architecture Decision Records (ADRs)
-│   ├── architecture.md            # System design and pipeline stages
+│   ├── migration/                 # Restructuring audit records and runbooks
+│   ├── PRD.md                     # Product Requirements Document
+│   ├── TechSpec.md                # System design, layout pipeline and C4 architecture
+│   ├── AppFlow.md                 # State inventory and navigation maps
+│   ├── Design.md                  # Visual identity and Excalidraw styling tokens
+│   ├── Schema.md                  # Canonical specification & Pydantic data models
+│   ├── ImplementationPlan.md      # Phased engineering plan and build sequencing
+│   ├── Tracker.md                 # Living project status and milestone burndown
+│   ├── Rules.md                   # Repository constitution and AI agent rules
+│   ├── API.md                     # FastMCP tool signatures and CLI contracts
+│   ├── SecurityAndCompliance.md   # STRIDE threat model and security boundaries
+│   ├── Testing.md                 # Test strategy, critical test cases and coverage
+│   ├── Deployment.md              # Build, release, PyPI publishing and client configs
+│   ├── Glossary.md                # Domain terms and definitions dictionary
+│   ├── RiskRegister.md            # Risk matrix, mitigations and active triggers
 │   ├── configuration.md           # Environment variables and limits
-│   ├── diagram-format.md          # Specification JSON schema reference
-│   ├── layout-engine.md           # Sugiyama layout implementation details
-│   ├── mcp-integration.md         # MCP client configuration patterns
-│   ├── security.md                # Threat model and resource bounds
-│   ├── testing.md                 # Test suite organization and policies
-│   └── troubleshooting.md         # Common errors and proven fixes
+│   └── troubleshooting.md         # Diagnostic procedures and FAQ
 ├── examples/                      # Runnable samples and test fixtures
 │   ├── architecture.json          # Multi-tier microservice architecture spec
 │   ├── flowchart.json             # Branching process flowchart spec
