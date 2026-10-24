@@ -6,10 +6,18 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     name: Test on ${{ matrix.os }} (Python ${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
@@ -17,11 +25,23 @@ jobs:
         python-version: ["3.12"]
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Verify no tracked files match .gitignore
+        shell: bash
+        run: |
+          tracked_ignored=$(git ls-files -ci --exclude-standard)
+          if [ -n "$tracked_ignored" ]; then
+            echo "::error::Tracked files matching .gitignore detected:"
+            echo "$tracked_ignored"
+            exit 1
+          fi
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v3
+        uses: astral-sh/setup-uv@v5
         with:
           version: "latest"
           enable-cache: true
