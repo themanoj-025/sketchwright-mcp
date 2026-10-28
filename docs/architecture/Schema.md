@@ -194,9 +194,10 @@ class ShapeType(str, Enum):
 ### 4.2 Enum: `LayoutAlgorithm` & `LayoutDirection`
 ```python
 class LayoutAlgorithm(str, Enum):
-    LAYERED = "layered"   # Sugiyama heuristic
-    GRID = "grid"         # Compact matrix layout
-    TREE = "tree"         # Hierarchical parent-child tree
+    LAYERED = "layered"  # Sugiyama heuristic
+    GRID = "grid"  # Compact matrix layout
+    TREE = "tree"  # Hierarchical parent-child tree
+
 
 class LayoutDirection(str, Enum):
     LR = "LR"  # Left-to-Right
@@ -211,6 +212,7 @@ class StrokeStyle(str, Enum):
     SOLID = "solid"
     DASHED = "dashed"
     DOTTED = "dotted"
+
 
 class FillStyle(str, Enum):
     SOLID = "solid"
