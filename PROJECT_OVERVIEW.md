@@ -2363,7 +2363,7 @@ Sketchwright is distributed under the **MIT License** [VERIFIED: [`LICENSE:L1-L2
 
 | Version | Date | Author / Generator | Commit Ref | Changes & Description |
 |---|---|---|---|---|
-| `1.0.0` | 2026-10-24 | Antigravity / Gemini-2.5-Pro | `e4c7c5b` | Initial comprehensive documentation generation adhering to Universal Master Ultra Prompt v3.0 |
+| `1.0.0` | 2026-10-24 | Antigravity / Gemini-2.5-Pro | `e4c7c5b` | Initial comprehensive documentation generation adhering to Technical Architecture Specification|
 
 ### Freshness Maintenance Checklist
 When modifying the repository code, review and update the following sections:
