@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/mcp-settings.json",
+  "description": "Sketchwright Excalidraw MCP Server Configuration",
+  "mcpServers": {
+    "sketchwright": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/manoj-025/sketchwright-mcp.git",
+        "sketchwright",
+        "mcp"
+      ]
+    }
+  }
+}
+

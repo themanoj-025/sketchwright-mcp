@@ -298,6 +298,16 @@ To register Sketchwright in an MCP client (such as Claude Desktop, VS Code, or G
 
 ---
 
+## Agent Skill Integration (`SKILL.md`)
+
+Sketchwright includes a universal open-standard agent skill definition located in [`skill/SKILL.md`](./skill/SKILL.md), fully compatible with **Claude Code**, **Cursor**, **GitHub Copilot**, **Codex**, and agent skill marketplaces like **Agensi.io**.
+
+- **Skill Manifest:** [`skill/SKILL.md`](./skill/SKILL.md)
+- **MCP Client Configuration:** [`skill/references/mcp-config.json`](./skill/references/mcp-config.json)
+- **Quickstart Guide:** [`skill/references/quickstart.md`](./skill/references/quickstart.md)
+
+---
+
 ## Configuration
 
 Sketchwright works out of the box with zero external configuration. Settings can be customized via environment variables (or a local `.env` file; see [`.env.example`](./.env.example)).
