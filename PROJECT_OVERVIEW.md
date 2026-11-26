@@ -3,7 +3,7 @@ document: PROJECT_OVERVIEW
 doc_version: 1.0.0
 spec_version: "3.0"
 generated_on: 2026-10-24T13:40:44Z
-generator: Antigravity / Gemini-2.5-Pro
+author: Manoj Jana
 run_mode: GENERATE
 depth_mode: EXHAUSTIVE
 output_layout: SINGLE
@@ -2363,7 +2363,7 @@ Sketchwright is distributed under the **MIT License** [VERIFIED: [`LICENSE:L1-L2
 
 | Version | Date | Author / Generator | Commit Ref | Changes & Description |
 |---|---|---|---|---|
-| `1.0.0` | 2026-10-24 | Antigravity / Gemini-2.5-Pro | `e4c7c5b` | Initial comprehensive documentation generation adhering to Technical Architecture Specification|
+| `1.0.0` \| 2026-10-24 \| Manoj Jana \| `e4c7c5b` | Initial comprehensive documentation generation adhering to Technical Architecture Specification|
 
 ### Freshness Maintenance Checklist
 When modifying the repository code, review and update the following sections:
